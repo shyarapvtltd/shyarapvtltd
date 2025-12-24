@@ -15,7 +15,7 @@ const Footer = () => {
               <img 
                 src={shyaraLogo} 
                 alt="Shyara" 
-                className="h-[60px] w-auto dark:invert transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
+                className="h-[90px] w-auto dark:invert transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
               />
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mb-4 leading-relaxed">
