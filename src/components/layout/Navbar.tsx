@@ -45,7 +45,7 @@ export const Navbar = () => {
             S
           </div>
           <span className="font-semibold text-lg tracking-tight">
-            Shyara<span className="text-muted-foreground font-normal">.tech</span>
+            Shyara
           </span>
         </Link>
 
