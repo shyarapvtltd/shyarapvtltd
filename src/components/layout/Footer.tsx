@@ -55,18 +55,19 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Solutions</h4>
             <ul className="space-y-3">
               {[
-                "Digital Marketing",
-                "Web & App Development",
-                "Digital Invitations",
-                "Restaurant POS",
+                { name: "Digital Marketing", href: "https://marketing.shyara.co.in" },
+                { name: "Digital Invitations", href: "https://digital.shyara.co.in" },
+                { name: "Restaurant POS", href: "https://bitex.shyara.co.in" },
               ].map((item) => (
-                <li key={item}>
-                  <Link
-                    to="/solutions"
-                    className="text-muted-foreground hover:text-foreground transition-smooth text-sm"
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-all duration-200 text-sm"
                   >
-                    {item}
-                  </Link>
+                    {item.name}
+                  </a>
                 </li>
               ))}
             </ul>

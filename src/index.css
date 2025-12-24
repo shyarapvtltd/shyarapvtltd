@@ -5,59 +5,106 @@
 @tailwind utilities;
 
 /* Shyara Tech Solutions Design System
-   Premium, minimal, dark-first aesthetic
+   Premium, minimal aesthetic with light default
    All colors in HSL format */
 
 @layer base {
   :root {
-    /* Dark theme as default - premium tech aesthetic */
-    --background: 220 15% 4%;
-    --foreground: 210 20% 95%;
+    /* Light theme as default - clean, modern aesthetic */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 10%;
 
-    --card: 220 15% 7%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 98%;
+    --card-foreground: 220 15% 10%;
 
-    --popover: 220 15% 7%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 10%;
 
-    /* Electric indigo accent */
-    --primary: 235 85% 65%;
-    --primary-foreground: 210 20% 98%;
+    /* Purple accent - tech premium tone */
+    --primary: 260 70% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 210 20% 90%;
+    --secondary: 220 10% 96%;
+    --secondary-foreground: 220 15% 15%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 220 10% 94%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 235 85% 65%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 260 70% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 15%;
-    --input: 220 15% 12%;
-    --ring: 235 85% 65%;
+    --border: 220 10% 88%;
+    --input: 220 10% 90%;
+    --ring: 260 70% 55%;
 
     --radius: 0.75rem;
 
     /* Custom semantic tokens */
-    --glow-primary: 235 85% 65%;
-    --surface-elevated: 220 15% 9%;
-    --text-subtle: 215 15% 50%;
-    --gradient-start: 235 85% 65%;
-    --gradient-end: 280 80% 60%;
+    --glow-primary: 260 70% 55%;
+    --surface-elevated: 0 0% 99%;
+    --text-subtle: 220 10% 50%;
+    --gradient-start: 260 70% 55%;
+    --gradient-end: 300 70% 50%;
 
     /* Sidebar tokens */
-    --sidebar-background: 220 15% 6%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 15% 15%;
+    --sidebar-primary: 260 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 10% 94%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 220 10% 90%;
+    --sidebar-ring: 260 70% 55%;
+  }
+
+  /* Dark theme - true dark aesthetic */
+  :root:not(.light) {
+    --background: 225 20% 6%;
+    --foreground: 210 20% 95%;
+
+    --card: 225 20% 8%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 225 20% 8%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Purple accent */
+    --primary: 260 70% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 18% 12%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 225 18% 15%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 260 70% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 18% 15%;
+    --input: 225 18% 12%;
+    --ring: 260 70% 60%;
+
+    --glow-primary: 260 70% 60%;
+    --surface-elevated: 225 20% 10%;
+    --text-subtle: 215 15% 50%;
+    --gradient-start: 260 70% 60%;
+    --gradient-end: 300 70% 55%;
+
+    --sidebar-background: 225 20% 7%;
     --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 235 85% 65%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 220 15% 12%;
+    --sidebar-primary: 260 70% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 18% 12%;
     --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 12%;
-    --sidebar-ring: 235 85% 65%;
+    --sidebar-border: 225 18% 12%;
+    --sidebar-ring: 260 70% 60%;
   }
 
   .light {
@@ -70,8 +117,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 10%;
 
-    --primary: 235 85% 55%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 260 70% 55%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 10% 96%;
     --secondary-foreground: 220 15% 15%;
@@ -79,30 +126,30 @@
     --muted: 220 10% 94%;
     --muted-foreground: 220 10% 40%;
 
-    --accent: 235 85% 55%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 260 70% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 90%;
+    --border: 220 10% 88%;
     --input: 220 10% 90%;
-    --ring: 235 85% 55%;
+    --ring: 260 70% 55%;
 
-    --glow-primary: 235 85% 55%;
+    --glow-primary: 260 70% 55%;
     --surface-elevated: 0 0% 99%;
     --text-subtle: 220 10% 50%;
-    --gradient-start: 235 85% 55%;
-    --gradient-end: 280 80% 50%;
+    --gradient-start: 260 70% 55%;
+    --gradient-end: 300 70% 50%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 220 15% 15%;
-    --sidebar-primary: 235 85% 55%;
-    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-primary: 260 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 10% 94%;
     --sidebar-accent-foreground: 220 15% 15%;
     --sidebar-border: 220 10% 90%;
-    --sidebar-ring: 235 85% 55%;
+    --sidebar-ring: 260 70% 55%;
   }
 }
 
