@@ -105,13 +105,13 @@ const HeroSection = () => (
           </Button>
         </motion.div>
 
-        {/* Scroll indicator (inline for small/medium screens) */}
-        <ScrollIndicator className="mt-8 flex justify-center pointer-events-none lg:hidden" />
+        {/* Scroll indicator (inline on small screens only to avoid overlap) */}
+        <ScrollIndicator className="mt-10 flex justify-center pointer-events-none md:hidden" />
       </motion.div>
     </div>
 
-    {/* Scroll indicator (fixed for large screens) */}
-    <ScrollIndicator className="hidden lg:block hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none" />
+    {/* Scroll indicator (fixed for extra large screens) */}
+    <ScrollIndicator className="hidden xl:block hero-scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none" />
   </section>
 );
 
