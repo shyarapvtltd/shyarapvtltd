@@ -1,8 +1,14 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 
 const TermsOfService = () => {
   return (
     <Layout>
+      <SEO 
+        title="Terms of Service"
+        description="Terms of Service for Shyara Tech Solutions. By accessing or using our website and services, you agree to these terms."
+        canonical="/terms-of-service"
+      />
       <article className="py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-5">
           <header className="mb-10">

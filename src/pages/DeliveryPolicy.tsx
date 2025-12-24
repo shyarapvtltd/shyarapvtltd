@@ -1,8 +1,14 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 
 const DeliveryPolicy = () => {
   return (
     <Layout>
+      <SEO 
+        title="Delivery Policy"
+        description="Delivery Policy for Shyara Tech Solutions. We provide digital services only — learn about our service delivery process."
+        canonical="/delivery-policy"
+      />
       <article className="py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-5">
           <header className="mb-10">

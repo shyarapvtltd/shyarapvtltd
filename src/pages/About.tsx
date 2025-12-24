@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { 
@@ -89,6 +90,11 @@ const timeline = [
 const About = () => {
   return (
     <Layout>
+      <SEO 
+        title="About Us"
+        description="Learn about Shyara Tech Solutions — an India-based technology company focused on creating digital products and services that help businesses grow."
+        canonical="/about"
+      />
       {/* Hero */}
       <Section className="pt-12 md:pt-20">
         <motion.div 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { 
@@ -138,6 +139,11 @@ const SolutionCard = ({ solution }: { solution: typeof solutions[0] }) => (
 const Solutions = () => {
   return (
     <Layout>
+      <SEO 
+        title="Our Solutions"
+        description="Explore Shyara's technology solutions: digital marketing, digital invitations, and BiteX restaurant POS. Built for performance and ready to scale."
+        canonical="/solutions"
+      />
       {/* Hero */}
       <Section className="pt-20 md:pt-24">
         <motion.div 

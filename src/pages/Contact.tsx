@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -120,6 +121,11 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Shyara Tech Solutions. Whether you have a project in mind or just want to explore possibilities, we'd love to hear from you."
+        canonical="/contact"
+      />
       {/* Hero */}
       <Section className="pt-12 md:pt-20">
         <motion.div 
