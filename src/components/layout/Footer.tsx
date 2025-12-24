@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
+import shyaraLogo from "@/assets/shyara-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,13 +11,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 rounded-lg bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold text-base">
-                S
-              </div>
-              <span className="font-semibold text-base tracking-tight">
-                Shyara
-              </span>
+            <Link to="/" className="flex items-center mb-3">
+              <img 
+                src={shyaraLogo} 
+                alt="Shyara" 
+                className="h-7 w-auto dark:invert"
+              />
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mb-4 leading-relaxed">
               Empowering businesses with thoughtful technology solutions. From digital marketing 
