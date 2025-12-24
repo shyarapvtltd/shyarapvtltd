@@ -197,6 +197,13 @@
     @apply transition-all duration-200 ease-out;
   }
 
+  /* Hide elements on short viewports (prevents hero overlap) */
+  @media (max-height: 720px) {
+    .hero-scroll-indicator {
+      display: none;
+    }
+  }
+
   /* Section spacing */
   .section-padding {
     @apply py-20 md:py-28 lg:py-32;

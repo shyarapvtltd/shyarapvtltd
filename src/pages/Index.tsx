@@ -28,6 +28,23 @@ const staggerContainer = {
   }
 };
 
+const ScrollIndicator = ({ className }: { className: string }) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 1.5 }}
+  >
+    <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
+      <motion.div
+        className="w-1 h-2 bg-muted-foreground rounded-full"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      />
+    </div>
+  </motion.div>
+);
+
 // Hero Section
 const HeroSection = () => (
   <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
@@ -75,7 +92,7 @@ const HeroSection = () => (
         {/* CTA Buttons */}
         <motion.div 
           variants={fadeInUp}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button asChild variant="hero" size="xl">
             <Link to="/solutions">
@@ -87,24 +104,14 @@ const HeroSection = () => (
             <Link to="/contact">Get in Touch</Link>
           </Button>
         </motion.div>
+
+        {/* Scroll indicator (inline for small/medium screens) */}
+        <ScrollIndicator className="mt-10 flex justify-center pointer-events-none lg:hidden" />
       </motion.div>
     </div>
 
-    {/* Scroll indicator */}
-    <motion.div 
-      className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.5 }}
-    >
-      <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-        <motion.div 
-          className="w-1 h-2 bg-muted-foreground rounded-full"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
-      </div>
-    </motion.div>
+    {/* Scroll indicator (fixed for large screens) */}
+    <ScrollIndicator className="hidden lg:block hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none" />
   </section>
 );
 
