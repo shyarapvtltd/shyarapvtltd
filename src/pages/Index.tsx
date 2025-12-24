@@ -286,20 +286,13 @@ const ProcessSection = () => (
       viewport={{ once: true }}
       variants={staggerContainer}
     >
-      {steps.map((step, index) => (
+      {steps.map((step) => (
         <motion.div
           key={step.number}
           variants={fadeInUp}
-          className="relative"
         >
           <div className="p-4">
-            <div className="relative">
-              <span className="text-3xl font-bold text-primary/20 block">{step.number}</span>
-              {/* Connector line - positioned at the top edge of the number */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 left-full w-full h-px bg-border" />
-              )}
-            </div>
+            <span className="text-3xl font-bold text-primary/20 block">{step.number}</span>
             <h4 className="text-base font-semibold mb-1 mt-2">{step.title}</h4>
             <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
           </div>
