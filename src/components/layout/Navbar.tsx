@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/hooks/useTheme";
+import shyaraLogo from "@/assets/shyara-logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -40,13 +41,12 @@ export const Navbar = () => {
     >
       <nav className="container-wide flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
-            S
-          </div>
-          <span className="font-semibold text-lg tracking-tight">
-            Shyara
-          </span>
+        <Link to="/" className="flex items-center group">
+          <img 
+            src={shyaraLogo} 
+            alt="Shyara" 
+            className="h-8 md:h-10 w-auto dark:invert"
+          />
         </Link>
 
         {/* Desktop Navigation */}
