@@ -292,14 +292,15 @@ const ProcessSection = () => (
           variants={fadeInUp}
           className="relative"
         >
-          {/* Connector line */}
-          {index < steps.length - 1 && (
-            <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-border -translate-x-1/2" />
-          )}
-          
           <div className="p-4">
-            <span className="text-3xl font-bold text-primary/20 mb-3 block">{step.number}</span>
-            <h4 className="text-base font-semibold mb-1">{step.title}</h4>
+            <div className="relative">
+              <span className="text-3xl font-bold text-primary/20 block">{step.number}</span>
+              {/* Connector line - positioned at the top edge of the number */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-1/2 left-full w-full h-px bg-border" />
+              )}
+            </div>
+            <h4 className="text-base font-semibold mb-1 mt-2">{step.title}</h4>
             <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
           </div>
         </motion.div>
