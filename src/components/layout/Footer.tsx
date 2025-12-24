@@ -15,7 +15,7 @@ const Footer = () => {
               <img 
                 src={shyaraLogo} 
                 alt="Shyara" 
-                className="h-7 w-auto dark:invert"
+                className="h-10 w-auto dark:invert"
               />
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mb-4 leading-relaxed">

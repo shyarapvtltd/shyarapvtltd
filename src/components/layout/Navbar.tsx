@@ -45,7 +45,7 @@ export const Navbar = () => {
           <img 
             src={shyaraLogo} 
             alt="Shyara" 
-            className="h-8 md:h-10 w-auto dark:invert"
+            className="h-12 md:h-14 w-auto dark:invert"
           />
         </Link>
 
