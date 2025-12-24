@@ -75,7 +75,7 @@ const HeroSection = () => (
         {/* CTA Buttons */}
         <motion.div 
           variants={fadeInUp}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pb-16"
         >
           <Button asChild variant="hero" size="xl">
             <Link to="/solutions">
@@ -92,7 +92,7 @@ const HeroSection = () => (
 
     {/* Scroll indicator */}
     <motion.div 
-      className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 1.5 }}
