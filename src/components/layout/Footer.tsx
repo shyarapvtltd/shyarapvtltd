@@ -11,11 +11,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center mb-3">
+            <Link to="/" className="flex items-center mb-3 group">
               <img 
                 src={shyaraLogo} 
                 alt="Shyara" 
-                className="h-10 w-auto dark:invert"
+                className="h-[60px] w-auto dark:invert transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
               />
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mb-4 leading-relaxed">

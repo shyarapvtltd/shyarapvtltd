@@ -45,7 +45,7 @@ export const Navbar = () => {
           <img 
             src={shyaraLogo} 
             alt="Shyara" 
-            className="h-12 md:h-14 w-auto dark:invert"
+            className="h-[72px] md:h-[84px] w-auto dark:invert transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
           />
         </Link>
 
