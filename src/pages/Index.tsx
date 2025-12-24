@@ -47,7 +47,7 @@ const ScrollIndicator = ({ className }: { className: string }) => (
 
 // Hero Section
 const HeroSection = () => (
-  <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+  <section className="relative min-h-[75vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-16">
     {/* Background gradient orbs */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
@@ -62,8 +62,8 @@ const HeroSection = () => (
         variants={staggerContainer}
       >
         {/* Badge */}
-        <motion.div variants={fadeInUp} className="mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border text-sm text-muted-foreground">
+        <motion.div variants={fadeInUp} className="mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border text-sm text-muted-foreground">
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             Building Digital Futures
           </span>
@@ -72,7 +72,7 @@ const HeroSection = () => (
         {/* Main headline */}
         <motion.h1 
           variants={fadeInUp}
-          className="text-display font-semibold mb-6"
+          className="text-display font-semibold mb-4"
         >
           Technology that{" "}
           <span className="text-gradient">empowers</span>{" "}
@@ -82,7 +82,7 @@ const HeroSection = () => (
         {/* Subheading */}
         <motion.p 
           variants={fadeInUp}
-          className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10"
+          className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8"
         >
           From digital marketing to smart automation, we craft solutions that 
           scale with your ambition. Thoughtful design, robust engineering, 
@@ -106,7 +106,7 @@ const HeroSection = () => (
         </motion.div>
 
         {/* Scroll indicator (inline for small/medium screens) */}
-        <ScrollIndicator className="mt-10 flex justify-center pointer-events-none lg:hidden" />
+        <ScrollIndicator className="mt-8 flex justify-center pointer-events-none lg:hidden" />
       </motion.div>
     </div>
 
@@ -155,17 +155,17 @@ const SolutionsPreview = () => (
         <motion.div
           key={solution.title}
           variants={fadeInUp}
-          className="group relative p-8 rounded-2xl bg-secondary/50 border border-border hover:border-primary/30 transition-all duration-300"
+          className="group relative p-6 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-all duration-300"
         >
           {/* Gradient background on hover */}
-          <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${solution.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+          <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${solution.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
           
           <div className="relative z-10">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-              <solution.icon className="text-primary" size={24} />
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <solution.icon className="text-primary" size={20} />
             </div>
-            <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">{solution.description}</p>
+            <h3 className="text-lg font-semibold mb-2">{solution.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">{solution.description}</p>
             <Link 
               to="/solutions" 
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
@@ -200,7 +200,7 @@ const values = [
 
 const WhyShyara = () => (
   <Section>
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -215,14 +215,14 @@ const WhyShyara = () => (
         </motion.span>
         <motion.h2 
           variants={fadeInUp}
-          className="text-headline font-semibold mb-6"
+          className="text-headline font-semibold mb-4"
         >
           We don't just build software.{" "}
           <span className="text-muted-foreground">We solve problems.</span>
         </motion.h2>
         <motion.p 
           variants={fadeInUp}
-          className="text-muted-foreground text-body-lg leading-relaxed mb-8"
+          className="text-muted-foreground text-body-lg leading-relaxed mb-6"
         >
           At Shyara, we believe technology should empower, not complicate. 
           Every project starts with understanding your unique challenges and 
@@ -238,7 +238,7 @@ const WhyShyara = () => (
       </motion.div>
 
       <motion.div 
-        className="grid gap-6"
+        className="grid gap-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -248,10 +248,10 @@ const WhyShyara = () => (
           <motion.div
             key={value.title}
             variants={fadeInUp}
-            className="flex gap-5 p-6 rounded-xl bg-secondary/30 border border-border/50"
+            className="flex gap-4 p-5 rounded-lg bg-secondary/30 border border-border/50"
           >
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-              <value.icon className="text-primary" size={22} />
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <value.icon className="text-primary" size={20} />
             </div>
             <div>
               <h4 className="font-semibold mb-1">{value.title}</h4>
@@ -280,7 +280,7 @@ const ProcessSection = () => (
     />
 
     <motion.div 
-      className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -297,9 +297,9 @@ const ProcessSection = () => (
             <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-border -translate-x-1/2" />
           )}
           
-          <div className="p-6">
-            <span className="text-4xl font-bold text-primary/20 mb-4 block">{step.number}</span>
-            <h4 className="text-lg font-semibold mb-2">{step.title}</h4>
+          <div className="p-4">
+            <span className="text-3xl font-bold text-primary/20 mb-3 block">{step.number}</span>
+            <h4 className="text-base font-semibold mb-1">{step.title}</h4>
             <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
           </div>
         </motion.div>
@@ -318,7 +318,7 @@ const metrics = [
 
 const TrustSection = () => (
   <Section>
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
       {metrics.map((metric, index) => (
         <motion.div
           key={metric.label}
@@ -328,7 +328,7 @@ const TrustSection = () => (
           transition={{ delay: index * 0.1 }}
           className="text-center"
         >
-          <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">{metric.value}</div>
+          <div className="text-2xl md:text-3xl font-bold text-gradient mb-1">{metric.value}</div>
           <div className="text-muted-foreground text-sm">{metric.label}</div>
         </motion.div>
       ))}
@@ -340,7 +340,7 @@ const TrustSection = () => (
 const CTASection = () => (
   <Section className="bg-gradient-to-b from-card/50 to-background">
     <motion.div 
-      className="max-w-3xl mx-auto text-center"
+      className="max-w-2xl mx-auto text-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -348,14 +348,14 @@ const CTASection = () => (
     >
       <motion.h2 
         variants={fadeInUp}
-        className="text-headline font-semibold mb-6"
+        className="text-headline font-semibold mb-4"
       >
         Ready to build something{" "}
         <span className="text-gradient">remarkable?</span>
       </motion.h2>
       <motion.p 
         variants={fadeInUp}
-        className="text-muted-foreground text-body-lg mb-10 max-w-xl mx-auto"
+        className="text-muted-foreground text-body-lg mb-8 max-w-xl mx-auto"
       >
         Let's discuss how Shyara can help transform your ideas into 
         impactful digital solutions.

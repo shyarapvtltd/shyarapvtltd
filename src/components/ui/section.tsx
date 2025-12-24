@@ -44,11 +44,11 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <div className={cn(
-      "mb-12 md:mb-16",
+      "mb-8 md:mb-10",
       align === "center" && "text-center",
       className
     )}>
-      <h2 className="text-headline font-semibold mb-4">{title}</h2>
+      <h2 className="text-headline font-semibold mb-3">{title}</h2>
       {subtitle && (
         <p className="text-muted-foreground text-body-lg max-w-2xl mx-auto">
           {subtitle}

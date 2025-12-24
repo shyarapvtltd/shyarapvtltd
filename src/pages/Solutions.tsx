@@ -92,39 +92,39 @@ const SolutionCard = ({ solution }: { solution: typeof solutions[0] }) => (
     variants={fadeInUp}
     className="group relative block"
   >
-    <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+    <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
     
-    <div className="relative p-8 md:p-10 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg">
-      <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+    <div className="relative p-6 md:p-8 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg">
+      <div className="flex flex-col lg:flex-row lg:items-start gap-6">
         {/* Left content */}
         <div className="flex-1">
-          <div className={`w-14 h-14 rounded-xl ${solution.iconBg} flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300`}>
-            <solution.icon className={solution.iconColor} size={28} />
+          <div className={`w-12 h-12 rounded-lg ${solution.iconBg} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}>
+            <solution.icon className={solution.iconColor} size={24} />
           </div>
           
-          <span className="text-xs font-medium tracking-wider uppercase text-muted-foreground mb-3 block">
+          <span className="text-xs font-medium tracking-wider uppercase text-muted-foreground mb-2 block">
             {solution.badge}
           </span>
           
-          <h3 className="text-2xl font-semibold mb-4">{solution.title}</h3>
+          <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
           
-          <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-xl">
             {solution.description}
           </p>
 
-          <div className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-200">
+          <div className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all duration-200">
             {solution.linkText}
-            <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </div>
         </div>
 
         {/* Features list */}
-        <div className="lg:w-72 shrink-0">
-          <h4 className="text-sm font-medium text-muted-foreground mb-4">Key Features</h4>
-          <ul className="space-y-3">
+        <div className="lg:w-64 shrink-0">
+          <h4 className="text-xs font-medium text-muted-foreground mb-3">Key Features</h4>
+          <ul className="space-y-2">
             {solution.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-3 text-sm">
-                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+              <li key={feature} className="flex items-start gap-2 text-sm">
+                <CheckCircle2 size={14} className="text-primary shrink-0 mt-0.5" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -139,7 +139,7 @@ const Solutions = () => {
   return (
     <Layout>
       {/* Hero */}
-      <Section className="pt-12 md:pt-20">
+      <Section className="pt-20 md:pt-24">
         <motion.div 
           className="max-w-3xl"
           initial="hidden"
@@ -148,13 +148,13 @@ const Solutions = () => {
         >
           <motion.span 
             variants={fadeInUp}
-            className="text-primary font-medium text-sm tracking-wide uppercase mb-4 block"
+            className="text-primary font-medium text-sm tracking-wide uppercase mb-3 block"
           >
             Our Solutions
           </motion.span>
           <motion.h1 
             variants={fadeInUp}
-            className="text-display font-semibold mb-6"
+            className="text-display font-semibold mb-4"
           >
             Technology that{" "}
             <span className="text-gradient">works for you</span>
@@ -170,9 +170,9 @@ const Solutions = () => {
       </Section>
 
       {/* Solutions Grid */}
-      <Section className="pt-8">
+      <Section className="pt-4">
         <motion.div 
-          className="space-y-6"
+          className="space-y-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -195,13 +195,13 @@ const Solutions = () => {
         >
           <motion.h2 
             variants={fadeInUp}
-            className="text-headline font-semibold mb-6"
+            className="text-headline font-semibold mb-4"
           >
             Not sure which solution fits?
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="text-muted-foreground text-body-lg mb-8"
+            className="text-muted-foreground text-body-lg mb-6"
           >
             Let's chat. We'll help you identify the right approach for your specific needs — no pressure, just clarity.
           </motion.p>
