@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
@@ -7,14 +6,9 @@ import {
   TrendingUp, 
   Sparkles, 
   UtensilsCrossed, 
-  Globe,
-  Smartphone,
-  BarChart3,
-  Mail,
-  QrCode,
-  ArrowUpRight,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  ExternalLink
 } from "lucide-react";
 
 const fadeInUp = {
@@ -44,26 +38,11 @@ const solutions = [
       "Social Media Marketing",
       "Analytics & Performance Tracking"
     ],
+    link: "https://marketing.shyara.co.in",
+    linkText: "Explore Shyara Marketing",
     gradient: "from-blue-500/20 via-cyan-500/10 to-transparent",
     iconBg: "bg-blue-500/10",
-    iconColor: "text-blue-400"
-  },
-  {
-    id: "development",
-    icon: Globe,
-    badge: "Web & Apps",
-    title: "Websites & Applications",
-    description: "Custom-built digital experiences that look stunning and perform flawlessly. From landing pages to full-stack applications, we bring your vision to life.",
-    features: [
-      "Responsive Website Design",
-      "Progressive Web Apps (PWA)",
-      "E-commerce Solutions",
-      "Custom Web Applications",
-      "API Development & Integration"
-    ],
-    gradient: "from-emerald-500/20 via-green-500/10 to-transparent",
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-400"
+    iconColor: "text-blue-500"
   },
   {
     id: "digital",
@@ -78,9 +57,11 @@ const solutions = [
       "Photo & Video Integration",
       "Multi-language Support"
     ],
+    link: "https://digital.shyara.co.in",
+    linkText: "Explore Shyara Digital",
     gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
     iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-400"
+    iconColor: "text-violet-500"
   },
   {
     id: "bitex",
@@ -95,24 +76,29 @@ const solutions = [
       "Sales Analytics & Reports",
       "Multi-outlet Support"
     ],
+    link: "https://bitex.shyara.co.in",
+    linkText: "Explore BiteX",
     gradient: "from-orange-500/20 via-amber-500/10 to-transparent",
     iconBg: "bg-orange-500/10",
-    iconColor: "text-orange-400"
+    iconColor: "text-orange-500"
   }
 ];
 
-const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; index: number }) => (
-  <motion.div
+const SolutionCard = ({ solution }: { solution: typeof solutions[0] }) => (
+  <motion.a
+    href={solution.link}
+    target="_blank"
+    rel="noopener noreferrer"
     variants={fadeInUp}
-    className="group relative"
+    className="group relative block"
   >
     <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
     
-    <div className="relative p-8 md:p-10 rounded-2xl bg-card border border-border hover:border-primary/20 transition-all duration-300">
+    <div className="relative p-8 md:p-10 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg">
       <div className="flex flex-col lg:flex-row lg:items-start gap-8">
         {/* Left content */}
         <div className="flex-1">
-          <div className={`w-14 h-14 rounded-xl ${solution.iconBg} flex items-center justify-center mb-6`}>
+          <div className={`w-14 h-14 rounded-xl ${solution.iconBg} flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300`}>
             <solution.icon className={solution.iconColor} size={28} />
           </div>
           
@@ -126,12 +112,10 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; inde
             {solution.description}
           </p>
 
-          <Button asChild variant="outline" size="lg" className="group/btn">
-            <Link to="/contact">
-              Get Started
-              <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
+          <div className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-200">
+            {solution.linkText}
+            <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </div>
         </div>
 
         {/* Features list */}
@@ -148,7 +132,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; inde
         </div>
       </div>
     </div>
-  </motion.div>
+  </motion.a>
 );
 
 const Solutions = () => {
@@ -179,7 +163,7 @@ const Solutions = () => {
             variants={fadeInUp}
             className="text-muted-foreground text-body-lg leading-relaxed"
           >
-            Four focused solutions designed to solve real business problems. 
+            Three focused solutions designed to solve real business problems. 
             Each one built with care, optimized for performance, and ready to scale.
           </motion.p>
         </motion.div>
@@ -194,8 +178,8 @@ const Solutions = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={staggerContainer}
         >
-          {solutions.map((solution, index) => (
-            <SolutionCard key={solution.id} solution={solution} index={index} />
+          {solutions.map((solution) => (
+            <SolutionCard key={solution.id} solution={solution} />
           ))}
         </motion.div>
       </Section>
@@ -223,10 +207,10 @@ const Solutions = () => {
           </motion.p>
           <motion.div variants={fadeInUp}>
             <Button asChild variant="hero" size="xl">
-              <Link to="/contact">
+              <a href="/contact">
                 Schedule a Call
                 <ArrowRight size={18} />
-              </Link>
+              </a>
             </Button>
           </motion.div>
         </motion.div>
