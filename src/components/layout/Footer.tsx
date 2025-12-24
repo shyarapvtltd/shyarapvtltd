@@ -75,16 +75,22 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-xs">
             © {currentYear} Shyara Tech Solutions (OPC) Pvt. Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-5">
-            <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link to="/privacy-policy" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
               Privacy Policy
             </Link>
-            <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
+            <Link to="/terms-of-service" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
               Terms of Service
+            </Link>
+            <Link to="/refund-policy" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
+              Refund & Cancellation
+            </Link>
+            <Link to="/delivery-policy" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
+              Delivery Policy
             </Link>
           </div>
         </div>
