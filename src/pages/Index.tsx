@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { 
@@ -376,6 +377,11 @@ const CTASection = () => (
 const Index = () => {
   return (
     <Layout>
+      <SEO 
+        title="Shyara Tech Solutions | Technology that Empowers"
+        description="From digital marketing to smart automation, Shyara Tech Solutions crafts technology solutions that scale with your ambition. Digital marketing, POS systems, and digital invitations."
+        canonical="/"
+      />
       <HeroSection />
       <SolutionsPreview />
       <WhyShyara />

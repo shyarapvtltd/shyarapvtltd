@@ -1,8 +1,14 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 
 const RefundPolicy = () => {
   return (
     <Layout>
+      <SEO 
+        title="Refund & Cancellation Policy"
+        description="Refund and Cancellation Policy for Shyara Tech Solutions. Learn about our refund process and subscription cancellation terms."
+        canonical="/refund-policy"
+      />
       <article className="py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-5">
           <header className="mb-10">
