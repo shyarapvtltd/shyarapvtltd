@@ -45,9 +45,9 @@ const contactMethods = [
     icon: MessageCircle,
     title: "WhatsApp",
     description: "Quick questions? Chat with us directly.",
-    action: "Message on WhatsApp",
-    href: "https://wa.me/919876543210?text=Hi%20Shyara%20Team%2C%20I'd%20like%20to%20discuss%20a%20project.",
-    color: "bg-green-500/10 text-green-400"
+    action: "+91 9584661610",
+    href: "https://wa.me/919584661610?text=Hi%20Shyara%20Team%2C%20I'd%20like%20to%20discuss%20a%20project.",
+    color: "bg-green-500/10 text-green-500"
   },
   {
     icon: Mail,
@@ -55,7 +55,7 @@ const contactMethods = [
     description: "For detailed inquiries and proposals.",
     action: "hello@shyara.co.in",
     href: "mailto:hello@shyara.co.in",
-    color: "bg-blue-500/10 text-blue-400"
+    color: "bg-blue-500/10 text-blue-500"
   },
   {
     icon: MapPin,
@@ -63,7 +63,7 @@ const contactMethods = [
     description: "India-based, serving globally.",
     action: "View on map",
     href: "#",
-    color: "bg-orange-500/10 text-orange-400"
+    color: "bg-orange-500/10 text-orange-500"
   }
 ];
 

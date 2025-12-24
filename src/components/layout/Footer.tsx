@@ -15,7 +15,7 @@ const Footer = () => {
                 S
               </div>
               <span className="font-semibold text-base tracking-tight">
-                Shyara<span className="text-muted-foreground font-normal">.tech</span>
+                Shyara
               </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mb-4 leading-relaxed">
