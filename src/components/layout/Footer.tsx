@@ -22,9 +22,12 @@ const Footer = () => {
               Empowering businesses with thoughtful technology solutions. From digital marketing 
               to smart automation — we build with purpose.
             </p>
-            <div className="flex items-center gap-2 text-muted-foreground text-xs">
-              <MapPin size={14} />
-              <span>India-based, Global Services</span>
+            <div className="flex items-start gap-2 text-muted-foreground text-xs">
+              <MapPin size={14} className="mt-0.5 shrink-0" />
+              <span>
+                Lata Kunj, Jai Hanuman Colony, Bazar Samiti,<br />
+                Mahendru, Sampatchak, Patna - 800006, Bihar, India
+              </span>
             </div>
           </div>
 
