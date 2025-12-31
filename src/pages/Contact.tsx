@@ -12,7 +12,6 @@ import { useToast } from "@/hooks/use-toast";
 import { 
   Mail, 
   MessageCircle, 
-  MapPin, 
   ArrowRight,
   Send,
   CheckCircle2
@@ -54,17 +53,9 @@ const contactMethods = [
     icon: Mail,
     title: "Email",
     description: "For detailed inquiries and proposals.",
-    action: "hello@shyara.co.in",
-    href: "mailto:hello@shyara.co.in",
+    action: "support@shyara.co.in",
+    href: "mailto:support@shyara.co.in",
     color: "bg-blue-500/10 text-blue-500"
-  },
-  {
-    icon: MapPin,
-    title: "Location",
-    description: "India-based, serving globally.",
-    action: "View on map",
-    href: "#",
-    color: "bg-orange-500/10 text-orange-500"
   }
 ];
 
