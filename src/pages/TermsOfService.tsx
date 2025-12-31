@@ -13,18 +13,21 @@ const TermsOfService = () => {
         <div className="max-w-3xl mx-auto px-5">
           <header className="mb-10">
             <h1 className="text-3xl md:text-4xl font-semibold mb-2">Terms of Service</h1>
-            <p className="text-muted-foreground text-sm">Last updated: 2025</p>
+            <p className="text-muted-foreground text-sm">Last updated: January 2025</p>
           </header>
 
           <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8 text-foreground">
-            <p className="text-muted-foreground leading-relaxed">
-              By accessing or using our website and services, you agree to these Terms of Service.
-            </p>
+            <section>
+              <h2 className="text-xl font-semibold mb-3">Acceptance of Terms</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                By accessing or using our website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+              </p>
+            </section>
 
             <section>
               <h2 className="text-xl font-semibold mb-3">Services</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Shyara Tech Solutions (OPC) Pvt. Ltd. provides digital marketing, technology solutions, digital invitations, and restaurant POS solutions through its platforms and sub-domains.
+                Shyara Tech Solutions (OPC) Pvt. Ltd. provides digital marketing, technology solutions, digital invitations, video invitations, and restaurant POS solutions through its platforms and sub-domains.
               </p>
             </section>
 
@@ -36,16 +39,16 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-3">Payments</h2>
+              <h2 className="text-xl font-semibold mb-3">Payments & Pricing</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Payments for services may be one-time or subscription-based, depending on the offering. Prices, billing cycles, and payment terms will be clearly communicated before purchase.
+                All payments must be completed in advance through our authorized payment gateway. Payments for services may be one-time or subscription-based, depending on the offering. Prices are subject to change without prior notice. Payment terms will be clearly communicated before purchase.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold mb-3">Intellectual Property</h2>
               <p className="text-muted-foreground leading-relaxed">
-                All content, designs, and materials on this website are the property of Shyara unless otherwise stated.
+                All content, designs, and materials on this website are the property of Shyara Tech Solutions unless otherwise stated. Unauthorized reproduction or distribution is prohibited.
               </p>
             </section>
 
@@ -53,6 +56,13 @@ const TermsOfService = () => {
               <h2 className="text-xl font-semibold mb-3">Limitation of Liability</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Shyara shall not be liable for indirect or consequential damages arising from the use of our services.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-3">Termination</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                We reserve the right to terminate or suspend access to our services at any time, without prior notice, for conduct that violates these terms or is harmful to other users or us.
               </p>
             </section>
 
@@ -67,6 +77,15 @@ const TermsOfService = () => {
               <h2 className="text-xl font-semibold mb-3">Governing Law</h2>
               <p className="text-muted-foreground leading-relaxed">
                 These terms are governed by the laws of India.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-3">Contact Us</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                For any questions regarding these terms, contact us at:<br />
+                Email: <a href="mailto:support@shyara.co.in" className="text-primary hover:underline">support@shyara.co.in</a><br />
+                Phone: <a href="tel:+919584661610" className="text-primary hover:underline">+91-9584661610</a>
               </p>
             </section>
           </div>
