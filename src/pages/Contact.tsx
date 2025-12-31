@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { 
   Mail, 
   MessageCircle, 
+  MapPin,
   ArrowRight,
   Send,
   CheckCircle2
@@ -56,6 +57,14 @@ const contactMethods = [
     action: "support@shyara.co.in",
     href: "mailto:support@shyara.co.in",
     color: "bg-blue-500/10 text-blue-500"
+  },
+  {
+    icon: MapPin,
+    title: "Registered Office",
+    description: "Shyara Tech Solutions (OPC) Pvt. Ltd.",
+    action: "Lata Kunj, Jai Hanuman Colony, Bazar Samiti, Mahendru, Sampatchak, Patna - 800006, Bihar, India",
+    href: "https://maps.google.com/?q=Mahendru,+Patna,+Bihar+800006",
+    color: "bg-primary/10 text-primary"
   }
 ];
 

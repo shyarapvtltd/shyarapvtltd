@@ -71,7 +71,10 @@ const RefundPolicy = () => {
             <section>
               <h2 className="text-xl font-semibold mb-3">Contact Us</h2>
               <p className="text-muted-foreground leading-relaxed">
-                For refund or cancellation requests, contact us at:<br />
+                For refund or cancellation requests, contact us at:<br /><br />
+                <strong>Shyara Tech Solutions (OPC) Pvt. Ltd.</strong><br />
+                Lata Kunj, Jai Hanuman Colony, Bazar Samiti,<br />
+                Mahendru, Sampatchak, Patna - 800006, Bihar, India<br /><br />
                 Email: <a href="mailto:support@shyara.co.in" className="text-primary hover:underline">support@shyara.co.in</a><br />
                 Phone: <a href="tel:+919584661610" className="text-primary hover:underline">+91-9584661610</a>
               </p>
