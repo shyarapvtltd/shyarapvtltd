@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { Section, SectionHeader } from "@/components/ui/section";
@@ -19,26 +19,26 @@ import {
 } from "lucide-react";
 import { useRef } from "react";
 
-// Enhanced animation variants
-const fadeInUp = {
+// Enhanced animation variants with proper typing
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
+    transition: { duration: 0.6 } 
   }
 };
 
-const fadeInScale = {
+const fadeInScale: Variants = {
   hidden: { opacity: 0, scale: 0.95 },
   visible: { 
     opacity: 1, 
     scale: 1, 
-    transition: { duration: 0.5, ease: "easeOut" } 
+    transition: { duration: 0.5 } 
   }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,

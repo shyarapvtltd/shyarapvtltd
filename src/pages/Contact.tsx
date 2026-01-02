@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { Section } from "@/components/ui/section";
@@ -15,16 +15,17 @@ import {
   MapPin,
   ArrowRight,
   Send,
-  CheckCircle2
+  CheckCircle2,
+  Sparkles
 } from "lucide-react";
 import { z } from "zod";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -48,7 +49,7 @@ const contactMethods = [
     description: "Quick questions? Chat with us directly.",
     action: "+91 9584661610",
     href: "https://wa.me/919584661610?text=Hi%20Shyara%20Team%2C%20I'd%20like%20to%20discuss%20a%20project.",
-    color: "bg-green-500/10 text-green-500"
+    gradient: "from-green-500 to-emerald-500"
   },
   {
     icon: Mail,
@@ -56,17 +57,53 @@ const contactMethods = [
     description: "For detailed inquiries and proposals.",
     action: "support@shyara.co.in",
     href: "mailto:support@shyara.co.in",
-    color: "bg-blue-500/10 text-blue-500"
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
     icon: MapPin,
-    title: "Registered Office",
+    title: "Office",
     description: "Shyara Tech Solutions (OPC) Pvt. Ltd.",
-    action: "Lata Kunj, Jai Hanuman Colony, Bazar Samiti, Mahendru, Sampatchak, Patna - 800006, Bihar, India",
+    action: "Patna, Bihar, India",
     href: "https://maps.google.com/?q=Mahendru,+Patna,+Bihar+800006",
-    color: "bg-primary/10 text-primary"
+    gradient: "from-violet-500 to-purple-500"
   }
 ];
+
+// Floating background elements
+const FloatingOrbs = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <motion.div
+      className="absolute -top-1/4 -right-1/4 w-[500px] h-[500px] rounded-full"
+      style={{
+        background: 'radial-gradient(circle, hsl(var(--glow-primary) / 0.1) 0%, transparent 70%)',
+      }}
+      animate={{
+        scale: [1, 1.1, 1],
+        opacity: [0.5, 0.7, 0.5],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    />
+    <motion.div
+      className="absolute -bottom-1/4 -left-1/4 w-[400px] h-[400px] rounded-full hidden lg:block"
+      style={{
+        background: 'radial-gradient(circle, hsl(var(--glow-secondary) / 0.08) 0%, transparent 70%)',
+      }}
+      animate={{
+        scale: [1.1, 1, 1.1],
+      }}
+      transition={{
+        duration: 10,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 2
+      }}
+    />
+  </div>
+);
 
 const Contact = () => {
   const { toast } = useToast();
@@ -126,30 +163,33 @@ const Contact = () => {
         description="Get in touch with Shyara Tech Solutions. Whether you have a project in mind or just want to explore possibilities, we'd love to hear from you."
         canonical="/contact"
       />
+      
       {/* Hero */}
-      <Section className="pt-12 md:pt-20">
+      <Section className="relative pt-24 md:pt-32 overflow-hidden">
+        <FloatingOrbs />
+        
         <motion.div 
-          className="max-w-3xl"
+          className="relative max-w-3xl"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
         >
           <motion.span 
             variants={fadeInUp}
-            className="text-primary font-medium text-sm tracking-wide uppercase mb-4 block"
+            className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6"
           >
             Get in Touch
           </motion.span>
           <motion.h1 
             variants={fadeInUp}
-            className="text-display font-semibold mb-6"
+            className="text-display mb-6"
           >
             Let's start a{" "}
             <span className="text-gradient">conversation</span>
           </motion.h1>
           <motion.p 
             variants={fadeInUp}
-            className="text-muted-foreground text-body-lg leading-relaxed"
+            className="text-muted-foreground text-body-xl leading-relaxed"
           >
             Whether you have a project in mind or just want to explore possibilities, 
             we'd love to hear from you. No pressure, just clarity.
@@ -159,7 +199,7 @@ const Contact = () => {
 
       {/* Contact Methods + Form */}
       <Section className="pt-8">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-20">
           {/* Contact Methods */}
           <motion.div 
             className="lg:col-span-2 space-y-6"
@@ -170,7 +210,7 @@ const Contact = () => {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-xl font-semibold mb-6"
+              className="text-2xl font-bold mb-8"
             >
               Other Ways to Reach Us
             </motion.h2>
@@ -182,17 +222,19 @@ const Contact = () => {
                 target={method.href.startsWith("http") ? "_blank" : undefined}
                 rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 variants={fadeInUp}
-                className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-200 group"
+                className="flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow group"
               >
-                <div className={`w-11 h-11 rounded-lg ${method.color} flex items-center justify-center shrink-0`}>
-                  <method.icon size={20} />
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.gradient} p-0.5 shrink-0`}>
+                  <div className="w-full h-full rounded-[10px] bg-card flex items-center justify-center group-hover:bg-transparent transition-colors">
+                    <method.icon className="text-foreground group-hover:text-white transition-colors" size={24} />
+                  </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium mb-1">{method.title}</h3>
+                  <h3 className="font-bold text-lg mb-1">{method.title}</h3>
                   <p className="text-muted-foreground text-sm mb-2">{method.description}</p>
-                  <span className="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-primary font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                     {method.action}
-                    <ArrowRight size={14} />
+                    <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                   </span>
                 </div>
               </motion.a>
@@ -209,19 +251,25 @@ const Contact = () => {
           >
             <motion.div 
               variants={fadeInUp}
-              className="p-8 md:p-10 rounded-2xl bg-card border border-border"
+              className="p-8 md:p-12 rounded-3xl bg-card/50 border border-border/50 backdrop-blur-sm"
             >
               {isSubmitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="text-primary" size={32} />
+                <motion.div 
+                  className="text-center py-16"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-8 shadow-glow">
+                    <CheckCircle2 className="text-white" size={40} />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-3">Message Sent!</h3>
-                  <p className="text-muted-foreground mb-8">
+                  <h3 className="text-3xl font-bold mb-4">Message Sent!</h3>
+                  <p className="text-muted-foreground text-lg mb-10">
                     Thanks for reaching out. We'll get back to you within 24 hours.
                   </p>
                   <Button 
                     variant="outline" 
+                    size="lg"
                     onClick={() => {
                       setIsSubmitted(false);
                       setFormData({ name: "", email: "", message: "" });
@@ -229,22 +277,27 @@ const Contact = () => {
                   >
                     Send Another Message
                   </Button>
-                </div>
+                </motion.div>
               ) : (
                 <>
-                  <h2 className="text-xl font-semibold mb-6">Send us a Message</h2>
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Sparkles className="text-primary" size={20} />
+                    </div>
+                    <h2 className="text-2xl font-bold">Send us a Message</h2>
+                  </div>
                   
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name" className="text-sm font-semibold">Name</Label>
                         <Input
                           id="name"
                           name="name"
                           placeholder="Your name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={errors.name ? "border-destructive" : ""}
+                          className={`h-12 rounded-xl bg-secondary/30 border-border/50 focus:border-primary/50 ${errors.name ? "border-destructive" : ""}`}
                           disabled={isSubmitting}
                         />
                         {errors.name && (
@@ -252,7 +305,7 @@ const Contact = () => {
                         )}
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email" className="text-sm font-semibold">Email</Label>
                         <Input
                           id="email"
                           name="email"
@@ -260,7 +313,7 @@ const Contact = () => {
                           placeholder="you@company.com"
                           value={formData.email}
                           onChange={handleChange}
-                          className={errors.email ? "border-destructive" : ""}
+                          className={`h-12 rounded-xl bg-secondary/30 border-border/50 focus:border-primary/50 ${errors.email ? "border-destructive" : ""}`}
                           disabled={isSubmitting}
                         />
                         {errors.email && (
@@ -270,15 +323,15 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message" className="text-sm font-semibold">Message</Label>
                       <Textarea
                         id="message"
                         name="message"
                         placeholder="Tell us about your project or ask us anything..."
-                        rows={5}
+                        rows={6}
                         value={formData.message}
                         onChange={handleChange}
-                        className={errors.message ? "border-destructive" : ""}
+                        className={`rounded-xl bg-secondary/30 border-border/50 focus:border-primary/50 resize-none ${errors.message ? "border-destructive" : ""}`}
                         disabled={isSubmitting}
                       />
                       {errors.message && (
@@ -289,19 +342,19 @@ const Contact = () => {
                     <Button 
                       type="submit" 
                       variant="hero" 
-                      size="lg" 
-                      className="w-full sm:w-auto"
+                      size="xl" 
+                      className="w-full sm:w-auto group"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                          <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                           Sending...
                         </>
                       ) : (
                         <>
                           Send Message
-                          <Send size={16} />
+                          <Send size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </>
                       )}
                     </Button>
@@ -314,9 +367,11 @@ const Contact = () => {
       </Section>
 
       {/* FAQ Teaser */}
-      <Section className="bg-card/30">
+      <Section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-card/30 to-transparent rounded-3xl" />
+        
         <motion.div 
-          className="text-center max-w-2xl mx-auto"
+          className="relative text-center max-w-2xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -324,22 +379,22 @@ const Contact = () => {
         >
           <motion.h2 
             variants={fadeInUp}
-            className="text-2xl font-semibold mb-4"
+            className="text-2xl font-bold mb-4"
           >
             Have questions?
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="text-muted-foreground mb-8"
+            className="text-muted-foreground text-lg mb-8"
           >
             Check out our solutions page to learn more about what we offer, 
             or reach out directly — we're always happy to chat.
           </motion.p>
           <motion.div variants={fadeInUp}>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="group">
               <Link to="/solutions">
                 Explore Solutions
-                <ArrowRight size={16} />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </motion.div>
