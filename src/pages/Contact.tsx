@@ -63,7 +63,7 @@ const contactMethods = [
     icon: MapPin,
     title: "Office",
     description: "Shyara Tech Solutions (OPC) Pvt. Ltd.",
-    action: "Patna, Bihar, India",
+    action: "Bazar Samiti, Patna- 800006, Bihar",
     href: "",
     gradient: "from-violet-500 to-purple-500"
   }
