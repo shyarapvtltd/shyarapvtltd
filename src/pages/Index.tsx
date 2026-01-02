@@ -465,11 +465,6 @@ const ProcessSection = () => (
             variants={fadeInUp}
             className="relative group"
           >
-            {/* Connecting line for desktop */}
-            {index < steps.length - 1 && (
-              <div className="hidden lg:block absolute top-10 left-1/2 w-full h-px bg-gradient-to-r from-primary/30 to-transparent" />
-            )}
-            
             <div className="relative p-6 text-center">
               {/* Step number with glow */}
               <div className="relative inline-flex mb-4">
