@@ -95,7 +95,6 @@ const Footer = () => {
                   <MapPin size={14} className="text-primary" />
                 </div>
                 <span className="text-sm leading-relaxed">
-                  Lata Kunj, Jai Hanuman Colony, Bazar Samiti,<br />
                   Mahendru, Sampatchak, Patna - 800006, Bihar
                 </span>
               </div>
