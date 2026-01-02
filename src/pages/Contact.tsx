@@ -165,11 +165,11 @@ const Contact = () => {
       />
       
       {/* Hero */}
-      <Section className="relative pt-24 md:pt-32 overflow-hidden">
+      <Section className="relative pt-20 md:pt-28 pb-8 overflow-hidden">
         <FloatingOrbs />
         
         <motion.div 
-          className="relative max-w-3xl"
+          className="relative max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -189,7 +189,7 @@ const Contact = () => {
           </motion.h1>
           <motion.p 
             variants={fadeInUp}
-            className="text-muted-foreground text-body-xl leading-relaxed"
+            className="text-muted-foreground text-body-xl leading-relaxed max-w-2xl mx-auto"
           >
             Whether you have a project in mind or just want to explore possibilities, 
             we'd love to hear from you. No pressure, just clarity.
