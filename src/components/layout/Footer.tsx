@@ -95,7 +95,7 @@ const Footer = () => {
                   <MapPin size={14} className="text-primary" />
                 </div>
                 <span className="text-sm leading-relaxed">
-                  Mahendru, Sampatchak, Patna - 800006, Bihar
+                  Bazar Samiti, Patna- 800006, Bihar
                 </span>
               </div>
             </div>
