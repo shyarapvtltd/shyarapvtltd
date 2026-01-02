@@ -1,10 +1,11 @@
-import { useState, useEffect, createContext, useContext, ReactNode } from "react";
+import { useState, useEffect, createContext, useContext, ReactNode, useCallback } from "react";
 
 type Theme = "light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  isTransitioning: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -17,6 +18,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }
     return "light";
   });
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -30,12 +32,26 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("shyara-theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const toggleTheme = useCallback(() => {
+    setIsTransitioning(true);
+    
+    // Add transition class for smooth color changes
+    document.documentElement.classList.add("theme-transitioning");
+    
+    // Small delay for the transition effect
+    requestAnimationFrame(() => {
+      setTheme((prev) => (prev === "light" ? "dark" : "light"));
+      
+      // Remove transition class after animation completes
+      setTimeout(() => {
+        document.documentElement.classList.remove("theme-transitioning");
+        setIsTransitioning(false);
+      }, 400);
+    });
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning }}>
       {children}
     </ThemeContext.Provider>
   );

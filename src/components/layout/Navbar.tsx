@@ -94,7 +94,7 @@ export const Navbar = () => {
           {/* Theme Toggle */}
           <motion.button
             onClick={toggleTheme}
-            className="p-2.5 rounded-full bg-secondary/50 hover:bg-secondary border border-border/50 transition-all duration-300"
+            className="relative p-2.5 rounded-full bg-secondary/50 hover:bg-secondary border border-border/50 transition-all duration-300 overflow-hidden"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -103,20 +103,20 @@ export const Navbar = () => {
               {theme === 'light' ? (
                 <motion.div
                   key="moon"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ y: -30, rotate: -90, opacity: 0 }}
+                  animate={{ y: 0, rotate: 0, opacity: 1 }}
+                  exit={{ y: 30, rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <Moon size={18} className="text-foreground" />
                 </motion.div>
               ) : (
                 <motion.div
                   key="sun"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ y: -30, rotate: 90, opacity: 0, scale: 0.5 }}
+                  animate={{ y: 0, rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ y: 30, rotate: -90, opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <Sun size={18} className="text-foreground" />
                 </motion.div>
@@ -134,15 +134,33 @@ export const Navbar = () => {
         <div className="flex md:hidden items-center gap-2 relative z-50">
           <motion.button
             onClick={toggleTheme}
-            className="p-2.5 rounded-full hover:bg-secondary/50 transition-all duration-200"
+            className="relative p-2.5 rounded-full hover:bg-secondary/50 transition-all duration-200 overflow-hidden"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             whileTap={{ scale: 0.95 }}
           >
-            {theme === 'light' ? (
-              <Moon size={20} className="text-foreground" />
-            ) : (
-              <Sun size={20} className="text-foreground" />
-            )}
+            <AnimatePresence mode="wait">
+              {theme === 'light' ? (
+                <motion.div
+                  key="moon-mobile"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 20, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <Moon size={20} className="text-foreground" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="sun-mobile"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 20, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <Sun size={20} className="text-foreground" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.button>
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
