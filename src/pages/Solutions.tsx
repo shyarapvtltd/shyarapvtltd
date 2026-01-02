@@ -202,11 +202,11 @@ const Solutions = () => {
       />
       
       {/* Hero */}
-      <Section className="relative pt-24 md:pt-32 overflow-hidden">
+      <Section className="relative pt-20 md:pt-28 overflow-hidden">
         <FloatingElements />
         
         <motion.div 
-          className="relative max-w-3xl"
+          className="relative max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -226,7 +226,7 @@ const Solutions = () => {
           </motion.h1>
           <motion.p 
             variants={fadeInUp}
-            className="text-muted-foreground text-body-xl leading-relaxed"
+            className="text-muted-foreground text-body-xl leading-relaxed max-w-2xl mx-auto"
           >
             Three focused solutions designed to solve real business problems. 
             Each one built with care, optimized for performance, and ready to scale.

@@ -134,11 +134,11 @@ const About = () => {
       />
       
       {/* Hero */}
-      <Section className="relative pt-24 md:pt-32 overflow-hidden">
+      <Section className="relative pt-20 md:pt-28 overflow-hidden">
         <FloatingOrbs />
         
         <motion.div 
-          className="relative max-w-3xl"
+          className="relative max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -158,7 +158,7 @@ const About = () => {
           </motion.h1>
           <motion.p 
             variants={fadeInUp}
-            className="text-muted-foreground text-body-xl leading-relaxed"
+            className="text-muted-foreground text-body-xl leading-relaxed max-w-2xl mx-auto"
           >
             Shyara Tech Solutions is an India-based technology company focused on 
             creating digital products and services that genuinely help businesses 
