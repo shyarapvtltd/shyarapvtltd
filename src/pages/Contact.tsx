@@ -221,14 +221,14 @@ const Contact = () => {
               const cardContent = (
                 <>
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.gradient} p-0.5 shrink-0`}>
-                    <div className={`w-full h-full rounded-[10px] bg-card flex items-center justify-center ${isClickable ? 'group-hover:bg-transparent' : ''} transition-colors`}>
-                      <method.icon className={`text-foreground ${isClickable ? 'group-hover:text-white' : ''} transition-colors`} size={24} />
+                    <div className="w-full h-full rounded-[10px] bg-card flex items-center justify-center group-hover:bg-transparent transition-colors">
+                      <method.icon className="text-foreground group-hover:text-white transition-colors" size={24} />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-lg mb-1">{method.title}</h3>
                     <p className="text-muted-foreground text-sm mb-2">{method.description}</p>
-                    <span className={`${isClickable ? 'text-primary' : 'text-foreground'} font-semibold inline-flex items-center gap-1 ${isClickable ? 'group-hover:gap-2' : ''} transition-all`}>
+                    <span className={`${isClickable ? 'text-primary' : 'text-foreground'} font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all`}>
                       {method.action}
                       {isClickable && <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />}
                     </span>
@@ -255,7 +255,7 @@ const Contact = () => {
                 <motion.div
                   key={method.title}
                   variants={fadeInUp}
-                  className="flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow"
+                  className="flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow group"
                 >
                   {cardContent}
                 </motion.div>
