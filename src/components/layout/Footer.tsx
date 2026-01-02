@@ -1,103 +1,179 @@
 import { Link } from "react-router-dom";
-import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { MapPin, ArrowUpRight, Mail, Phone } from "lucide-react";
 import shyaraLogo from "@/assets/shyara-logo.png";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "Solutions", path: "/solutions" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const solutions = [
+    { name: "Digital Marketing", href: "https://marketing.shyara.co.in" },
+    { name: "Digital Invitations", href: "https://digital.shyara.co.in" },
+    { name: "Restaurant POS", href: "https://bitex.shyara.co.in" },
+  ];
+
+  const legalLinks = [
+    { name: "Privacy Policy", path: "/privacy-policy" },
+    { name: "Terms of Service", path: "/terms-of-service" },
+    { name: "Refund Policy", path: "/refund-policy" },
+    { name: "Delivery Policy", path: "/delivery-policy" },
+  ];
+
   return (
-    <footer className="border-t border-border bg-card/30">
-      <div className="container-wide py-10 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center mb-3 group">
-              <img 
+    <footer className="relative overflow-hidden border-t border-border/50">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-background" />
+      
+      {/* Decorative orb */}
+      <div className="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-primary/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      <motion.div 
+        className="container-wide relative py-16 md:py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          {/* Brand section */}
+          <motion.div variants={fadeInUp} className="lg:col-span-5">
+            <Link to="/" className="inline-block mb-6 group">
+              <motion.img 
                 src={shyaraLogo} 
                 alt="Shyara" 
-                className="h-[90px] w-auto dark:invert transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
+                className="h-[80px] w-auto dark:invert transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
               />
             </Link>
-            <p className="text-muted-foreground text-sm max-w-sm mb-4 leading-relaxed">
+            <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed">
               Empowering businesses with thoughtful technology solutions. From digital marketing 
               to smart automation — we build with purpose.
             </p>
-            <div className="flex items-start gap-2 text-muted-foreground text-xs">
-              <MapPin size={14} className="mt-0.5 shrink-0" />
-              <span>
-                Lata Kunj, Jai Hanuman Colony, Bazar Samiti,<br />
-                Mahendru, Sampatchak, Patna - 800006, Bihar, India
-              </span>
+            
+            {/* Contact info */}
+            <div className="space-y-3">
+              <a 
+                href="mailto:support@shyara.co.in" 
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Mail size={14} className="text-primary" />
+                </div>
+                <span className="text-sm">support@shyara.co.in</span>
+              </a>
+              <a 
+                href="tel:+919584661610" 
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Phone size={14} className="text-primary" />
+                </div>
+                <span className="text-sm">+91 9584661610</span>
+              </a>
+              <div className="flex items-start gap-3 text-muted-foreground">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <MapPin size={14} className="text-primary" />
+                </div>
+                <span className="text-sm leading-relaxed">
+                  Lata Kunj, Jai Hanuman Colony, Bazar Samiti,<br />
+                  Mahendru, Sampatchak, Patna - 800006, Bihar
+                </span>
+              </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-sm mb-3">Quick Links</h4>
-            <ul className="space-y-2">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Solutions", path: "/solutions" },
-                { name: "About", path: "/about" },
-                { name: "Contact", path: "/contact" },
-              ].map((link) => (
+          <motion.div variants={fadeInUp} className="lg:col-span-2">
+            <h4 className="font-semibold mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-muted-foreground hover:text-foreground transition-all duration-200 text-sm"
+                    className="text-muted-foreground hover:text-foreground transition-colors text-sm inline-flex items-center gap-1 group"
                   >
                     {link.name}
+                    <ArrowUpRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Solutions */}
-          <div>
-            <h4 className="font-semibold text-sm mb-3">Solutions</h4>
-            <ul className="space-y-2">
-              {[
-                { name: "Digital Marketing", href: "https://marketing.shyara.co.in" },
-                { name: "Digital Invitations", href: "https://digital.shyara.co.in" },
-                { name: "Restaurant POS", href: "https://bitex.shyara.co.in" },
-              ].map((item) => (
+          <motion.div variants={fadeInUp} className="lg:col-span-2">
+            <h4 className="font-semibold mb-6">Solutions</h4>
+            <ul className="space-y-3">
+              {solutions.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-all duration-200 text-sm"
+                    className="text-muted-foreground hover:text-foreground transition-colors text-sm inline-flex items-center gap-1 group"
                   >
                     {item.name}
+                    <ArrowUpRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
+
+          {/* Legal */}
+          <motion.div variants={fadeInUp} className="lg:col-span-3">
+            <h4 className="font-semibold mb-6">Legal</h4>
+            <ul className="space-y-3">
+              {legalLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-muted-foreground hover:text-foreground transition-colors text-sm inline-flex items-center gap-1 group"
+                  >
+                    {link.name}
+                    <ArrowUpRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-xs">
+        <motion.div 
+          variants={fadeInUp}
+          className="mt-16 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <p className="text-muted-foreground text-sm text-center md:text-left">
             © {currentYear} Shyara Tech Solutions (OPC) Pvt. Ltd. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link to="/privacy-policy" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
-              Privacy Policy
-            </Link>
-            <Link to="/terms-of-service" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
-              Terms of Service
-            </Link>
-            <Link to="/refund-policy" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
-              Refund & Cancellation
-            </Link>
-            <Link to="/delivery-policy" className="text-muted-foreground hover:text-foreground transition-all duration-200 text-xs">
-              Delivery Policy
-            </Link>
+          <div className="flex items-center gap-6">
+            <span className="text-muted-foreground text-sm">
+              Made with care in India 🇮🇳
+            </span>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </footer>
   );
 };
