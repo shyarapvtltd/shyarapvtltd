@@ -217,20 +217,9 @@ const Contact = () => {
 
             {contactMethods.map((method) => {
               const isClickable = method.href !== "";
-              const Component = isClickable ? motion.a : motion.div;
-              const linkProps = isClickable ? {
-                href: method.href,
-                target: method.href.startsWith("http") ? "_blank" : undefined,
-                rel: method.href.startsWith("http") ? "noopener noreferrer" : undefined,
-              } : {};
               
-              return (
-                <Component
-                  key={method.title}
-                  {...linkProps}
-                  variants={fadeInUp}
-                  className={`flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow group ${isClickable ? 'cursor-pointer' : ''}`}
-                >
+              const cardContent = (
+                <>
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.gradient} p-0.5 shrink-0`}>
                     <div className={`w-full h-full rounded-[10px] bg-card flex items-center justify-center ${isClickable ? 'group-hover:bg-transparent' : ''} transition-colors`}>
                       <method.icon className={`text-foreground ${isClickable ? 'group-hover:text-white' : ''} transition-colors`} size={24} />
@@ -244,7 +233,32 @@ const Contact = () => {
                       {isClickable && <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />}
                     </span>
                   </div>
-                </Component>
+                </>
+              );
+
+              if (isClickable) {
+                return (
+                  <motion.a
+                    key={method.title}
+                    href={method.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variants={fadeInUp}
+                    className="flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow group cursor-pointer"
+                  >
+                    {cardContent}
+                  </motion.a>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={method.title}
+                  variants={fadeInUp}
+                  className="flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow"
+                >
+                  {cardContent}
+                </motion.div>
               );
             })}
           </motion.div>
