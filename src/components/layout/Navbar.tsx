@@ -31,37 +31,60 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
+          ? "bg-background/70 backdrop-blur-2xl border-b border-border/50 shadow-sm"
           : "bg-transparent"
       }`}
     >
       <nav className="container-wide flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center group">
-          <img 
+        <Link to="/" className="flex items-center group relative z-50">
+          <motion.img 
             src={shyaraLogo} 
             alt="Shyara" 
-            className="h-[108px] md:h-[126px] w-auto dark:invert transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
+            className="h-[100px] md:h-[120px] w-auto dark:invert transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1 bg-secondary/50 backdrop-blur-sm rounded-full p-1.5 border border-border/50">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 location.pathname === link.path
-                  ? "text-foreground bg-secondary"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {link.name}
+              {location.pathname === link.path && (
+                <motion.div
+                  layoutId="navbar-active"
+                  className="absolute inset-0 bg-primary rounded-full"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10">{link.name}</span>
             </Link>
           ))}
         </div>
@@ -69,79 +92,150 @@ export const Navbar = () => {
         {/* Right side actions */}
         <div className="hidden md:flex items-center gap-3">
           {/* Theme Toggle */}
-          <button
+          <motion.button
             onClick={toggleTheme}
-            className="p-2.5 rounded-lg bg-secondary hover:bg-secondary/80 transition-all duration-200"
+            className="p-2.5 rounded-full bg-secondary/50 hover:bg-secondary border border-border/50 transition-all duration-300"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {theme === 'light' ? (
-              <Moon size={18} className="text-foreground" />
-            ) : (
-              <Sun size={18} className="text-foreground" />
-            )}
-          </button>
+            <AnimatePresence mode="wait">
+              {theme === 'light' ? (
+                <motion.div
+                  key="moon"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Moon size={18} className="text-foreground" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="sun"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Sun size={18} className="text-foreground" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
           
           {/* CTA Button */}
-          <Button asChild variant="hero" size="sm">
+          <Button asChild variant="hero" size="sm" className="rounded-full">
             <Link to="/contact">Talk to Us</Link>
           </Button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="flex md:hidden items-center gap-2">
-          <button
+        <div className="flex md:hidden items-center gap-2 relative z-50">
+          <motion.button
             onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-secondary transition-all duration-200"
+            className="p-2.5 rounded-full hover:bg-secondary/50 transition-all duration-200"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            whileTap={{ scale: 0.95 }}
           >
             {theme === 'light' ? (
               <Moon size={20} className="text-foreground" />
             ) : (
               <Sun size={20} className="text-foreground" />
             )}
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-lg hover:bg-secondary transition-all duration-200"
+            className="p-2.5 rounded-full hover:bg-secondary/50 transition-all duration-200"
             aria-label="Toggle menu"
+            whileTap={{ scale: 0.95 }}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <AnimatePresence mode="wait">
+              {isMobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={24} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={24} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full screen overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 md:hidden bg-background/95 backdrop-blur-2xl z-40"
           >
-            <div className="container-wide py-4 flex flex-col gap-2">
+            <motion.div 
+              className="flex flex-col items-center justify-center min-h-screen gap-6 p-8"
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { 
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+                }
+              }}
+            >
               {navLinks.map((link) => (
-                <Link
+                <motion.div
                   key={link.path}
-                  to={link.path}
-                  className={`px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
-                    location.pathname === link.path
-                      ? "text-foreground bg-secondary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-                  }`}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    to={link.path}
+                    className={`text-3xl font-semibold transition-all duration-200 ${
+                      location.pathname === link.path
+                        ? "text-gradient"
+                        : "text-foreground/70 hover:text-foreground"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <Button asChild variant="hero" size="lg" className="mt-2">
-                <Link to="/contact">Talk to Us</Link>
-              </Button>
-            </div>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="mt-8"
+              >
+                <Button asChild variant="hero" size="xl" className="rounded-full">
+                  <Link to="/contact">Talk to Us</Link>
+                </Button>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
 
