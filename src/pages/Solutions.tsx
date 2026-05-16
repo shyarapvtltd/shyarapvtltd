@@ -151,7 +151,7 @@ const FloatingElements = () => (
         delay: 1,
       }}
     />
-  </motion.div>
+  </div>
 );
 
 const Solutions = () => {
