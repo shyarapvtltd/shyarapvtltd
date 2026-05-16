@@ -5,10 +5,8 @@ import SEO from "@/components/SEO";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { 
-  TrendingUp, 
-  Sparkles, 
-  UtensilsCrossed, 
   ArrowRight,
+  ExternalLink,
   Zap,
   Shield,
   Users,
@@ -17,6 +15,11 @@ import {
   Target,
   Layers
 } from "lucide-react";
+import {
+  featuredSolutions,
+  coreSolutions,
+  type Solution,
+} from "@/content/solutions";
 import { useRef } from "react";
 
 // Enhanced animation variants with proper typing
@@ -210,9 +213,9 @@ const HeroSection = () => {
             variants={fadeInUp}
             className="text-body-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            From digital marketing to smart automation, we craft solutions that 
-            scale with your ambition. Thoughtful design, robust engineering, 
-            measurable results.
+            From digital marketing and wedding invitations to restaurant POS and 
+            education lab hardware—we craft solutions that scale with your ambition. 
+            Thoughtful design, robust engineering, measurable results.
           </motion.p>
 
           {/* CTA Buttons with enhanced styling */}
@@ -258,33 +261,15 @@ const HeroSection = () => {
   );
 };
 
-// Solutions data
-const solutions = [
-  {
-    icon: TrendingUp,
-    title: "Shyara Marketing",
-    description: "Digital growth strategies, paid ads, websites, and GMB optimization that drive real results.",
-    gradient: "from-blue-500 to-cyan-400",
-    bgGradient: "from-blue-500/10 to-cyan-500/5",
-  },
-  {
-    icon: Sparkles,
-    title: "Shyara Digital",
-    description: "Beautiful digital invitations and shareable event experiences that delight your guests.",
-    gradient: "from-violet-500 to-purple-400",
-    bgGradient: "from-violet-500/10 to-purple-500/5",
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "BiteX by Shyara",
-    description: "Smart restaurant POS with QR ordering, live analytics, and seamless operations.",
-    gradient: "from-orange-500 to-amber-400",
-    bgGradient: "from-orange-500/10 to-amber-500/5",
-  },
-];
-
-// Premium solution card
-const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; index: number }) => (
+const SolutionCard = ({
+  solution,
+  index,
+  featured = false,
+}: {
+  solution: Solution;
+  index: number;
+  featured?: boolean;
+}) => (
   <motion.div
     variants={fadeInUp}
     custom={index}
@@ -292,9 +277,13 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; inde
   >
     <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${solution.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
     
-    <Link 
-      to="/solutions"
-      className="relative block p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow"
+    <a
+      href={solution.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`relative block rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow ${
+        featured ? "p-8 md:p-10" : "p-8"
+      }`}
     >
       {/* Icon with gradient background */}
       <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${solution.gradient} p-0.5 mb-6`}>
@@ -303,14 +292,25 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; inde
         </div>
       </div>
       
+      <div className="flex flex-wrap items-center gap-2 mb-3">
+        <span className="text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+          {solution.badge}
+        </span>
+        {featured && (
+          <span className="px-2 py-0.5 rounded-full bg-primary/15 text-primary text-xs font-semibold uppercase">
+            New
+          </span>
+        )}
+      </div>
+
       <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
-      <p className="text-muted-foreground leading-relaxed mb-6">{solution.description}</p>
+      <p className="text-muted-foreground leading-relaxed mb-6">{solution.shortDescription}</p>
       
       <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-        <span>Learn more</span>
-        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+        <span>{solution.linkText}</span>
+        <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
       </div>
-    </Link>
+    </a>
   </motion.div>
 );
 
@@ -323,19 +323,26 @@ const SolutionsPreview = () => (
     <div className="relative">
       <SectionHeader 
         title="What We Build"
-        subtitle="Three focused solutions, one unified mission — helping businesses thrive in the digital age."
+        subtitle="Five focused brands, one unified mission — helping businesses and institutions thrive in the digital age."
       />
 
-      <motion.div 
-        className="grid md:grid-cols-3 gap-6"
+      <motion.div
+        className="space-y-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerContainer}
       >
-        {solutions.map((solution, index) => (
-          <SolutionCard key={solution.title} solution={solution} index={index} />
-        ))}
+        <motion.div className="grid md:grid-cols-2 gap-6">
+          {featuredSolutions.map((solution, index) => (
+            <SolutionCard key={solution.id} solution={solution} index={index} featured />
+          ))}
+        </motion.div>
+        <motion.div className="grid md:grid-cols-3 gap-6">
+          {coreSolutions.map((solution, index) => (
+            <SolutionCard key={solution.id} solution={solution} index={index} />
+          ))}
+        </motion.div>
       </motion.div>
     </div>
   </Section>
@@ -572,7 +579,7 @@ const Index = () => {
     <Layout>
       <SEO 
         title="Shyara Tech Solutions | Technology that Empowers"
-        description="From digital marketing to smart automation, Shyara Tech Solutions crafts technology solutions that scale with your ambition. Digital marketing, POS systems, and digital invitations."
+        description="Shyara Tech Solutions builds five focused brands: marketing, custom digital invitations, Invites by Shyara wedding platform, BiteX restaurant POS, and Shyara Education Labs for student electronics."
         canonical="/"
       />
       <HeroSection />

@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
 
           <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8 text-foreground">
             <p className="text-muted-foreground leading-relaxed">
-              At Shyara Tech Solutions (OPC) Pvt. Ltd. ("Shyara", "we", "our", "us"), we value your privacy. This Privacy Policy explains how we collect, use, store, and protect your personal information when you visit our website or use our services.
+              At Shyara Tech Solutions (OPC) Pvt. Ltd. ("Shyara", "we", "our", "us"), we value your privacy. This Privacy Policy explains how we collect, use, store, and protect your personal information when you visit shyara.co.in or use our services through sub-domains and platforms such as marketing.shyara.co.in, digital.shyara.co.in, invitesbyshyara.com, bitex.shyara.co.in, and tech.shyara.co.in.
             </p>
 
             <section>

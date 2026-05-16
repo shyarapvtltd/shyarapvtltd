@@ -86,21 +86,24 @@ const timeline = [
   {
     year: "2023",
     title: "The Beginning",
-    description: "Shyara Tech Solutions was founded with a simple mission: make technology accessible to businesses of all sizes.",
-    icon: Sparkles
+    description:
+      "Shyara Tech Solutions was founded with a simple mission: make technology accessible to businesses of all sizes.",
+    icon: Sparkles,
   },
   {
     year: "2024",
     title: "Expanding Horizons",
-    description: "Launched specialized sub-brands to serve specific verticals with focused solutions.",
-    icon: Rocket
+    description:
+      "Launched Shyara Marketing, Shyara Digital, and BiteX by Shyara — focused brands for growth, celebrations, and restaurant operations.",
+    icon: Rocket,
   },
   {
     year: "2025",
     title: "Building the Future",
-    description: "Continuing to innovate with AI-powered solutions and automated platforms that scale.",
-    icon: Target
-  }
+    description:
+      "Launched Invites by Shyara, a self-serve wedding invitation platform, and began active design on Shyara Education Labs hardware for student labs.",
+    icon: Target,
+  },
 ];
 
 // Floating background elements
@@ -129,7 +132,7 @@ const About = () => {
     <Layout>
       <SEO 
         title="About Us"
-        description="Learn about Shyara Tech Solutions — an India-based technology company focused on creating digital products and services that help businesses grow."
+        description="Learn about Shyara Tech Solutions — marketing, custom digital invitations, Invites by Shyara, BiteX restaurant POS, and Shyara Education Labs for student electronics."
         canonical="/about"
       />
       
@@ -162,8 +165,9 @@ const About = () => {
           >
             Shyara Tech Solutions is an India-based technology company focused on 
             creating digital products and services that genuinely help businesses 
-            grow. We combine design thinking with engineering precision to deliver 
-            solutions that work.
+            and institutions grow. Our portfolio spans Shyara Marketing, Shyara Digital, 
+            Invites by Shyara, BiteX, and Shyara Education Labs — each built for a 
+            specific need, united by one standard of quality.
           </motion.p>
         </motion.div>
       </Section>

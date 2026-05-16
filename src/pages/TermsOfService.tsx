@@ -27,7 +27,7 @@ const TermsOfService = () => {
             <section>
               <h2 className="text-xl font-semibold mb-3">Services</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Shyara Tech Solutions (OPC) Pvt. Ltd. provides digital marketing, technology solutions, digital invitations, video invitations, and restaurant POS solutions through its platforms and sub-domains.
+                Shyara Tech Solutions (OPC) Pvt. Ltd. provides digital marketing, custom digital invitations, the Invites by Shyara self-serve wedding platform, BiteX restaurant POS, and Shyara Education Labs (education hardware, currently in design) through its websites and sub-domains.
               </p>
             </section>
 

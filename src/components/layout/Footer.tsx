@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, ArrowUpRight, Mail, Phone } from "lucide-react";
 import shyaraLogo from "@/assets/shyara-logo.png";
+import { footerSolutionLinks } from "@/content/solutions";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -26,11 +27,7 @@ const Footer = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const solutions = [
-    { name: "Digital Marketing", href: "https://marketing.shyara.co.in" },
-    { name: "Digital Invitations", href: "https://digital.shyara.co.in" },
-    { name: "Restaurant POS", href: "https://bitex.shyara.co.in" },
-  ];
+  const solutions = [...footerSolutionLinks];
 
   const legalLinks = [
     { name: "Privacy Policy", path: "/privacy-policy" },
@@ -66,8 +63,8 @@ const Footer = () => {
               />
             </Link>
             <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed">
-              Empowering businesses with thoughtful technology solutions. From digital marketing 
-              to smart automation — we build with purpose.
+              Empowering businesses and institutions with thoughtful technology. From marketing 
+              and invitations to restaurant POS and education lab hardware — we build with purpose.
             </p>
             
             {/* Contact info */}

@@ -24,7 +24,7 @@ const RefundPolicy = () => {
             <section>
               <h2 className="text-xl font-semibold mb-3">Service-Based Nature</h2>
               <p className="text-muted-foreground leading-relaxed">
-                All services offered are digital and customized in nature. This includes digital invitations, video invitations, marketing services, and technology solutions.
+                Most services offered through shyara.co.in and our sub-brands are digital in nature. This includes custom digital invitations, marketing services, the Invites by Shyara platform, and BiteX restaurant software. Refund terms for Invites by Shyara and Shyara Education Labs (when launched) are governed by the policies on their respective product websites.
               </p>
             </section>
 

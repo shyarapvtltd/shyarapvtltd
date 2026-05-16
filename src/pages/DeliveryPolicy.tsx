@@ -6,25 +6,25 @@ const DeliveryPolicy = () => {
     <Layout>
       <SEO 
         title="Delivery Policy"
-        description="Delivery Policy for Shyara Tech Solutions. We provide digital services only — learn about our service delivery process."
+        description="Delivery Policy for Shyara Tech Solutions. Digital service delivery and pre-launch information for Shyara Education Labs hardware."
         canonical="/delivery-policy"
       />
       <article className="py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-5">
           <header className="mb-10">
             <h1 className="text-3xl md:text-4xl font-semibold mb-2">Delivery Policy</h1>
-            <p className="text-muted-foreground text-sm">Last updated: January 2025</p>
+            <p className="text-muted-foreground text-sm">Last updated: May 2026</p>
           </header>
 
           <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8 text-foreground">
             <p className="text-muted-foreground leading-relaxed">
-              Shyara Tech Solutions (OPC) Pvt. Ltd. delivers all products and services digitally. No physical products are shipped.
+              Shyara Tech Solutions (OPC) Pvt. Ltd. operates multiple brands. Most services are delivered digitally. Shyara Education Labs hardware is currently in the design phase and not yet commercially launched.
             </p>
 
             <section>
-              <h2 className="text-xl font-semibold mb-3">Mode of Delivery</h2>
+              <h2 className="text-xl font-semibold mb-3">Digital Services</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
-                Services are delivered digitally via:
+                Digital services—including Shyara Marketing, Shyara Digital (custom invitations), Invites by Shyara, and BiteX restaurant POS—are delivered via:
               </p>
               <ul className="list-disc list-inside text-muted-foreground space-y-2">
                 <li>Email</li>
@@ -35,9 +35,20 @@ const DeliveryPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-3">Delivery Timeline</h2>
+              <h2 className="text-xl font-semibold mb-3">Delivery Timeline (Digital)</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Digital invitations and related services are delivered within 2–5 working days depending on customization requirements. For software or platform-based services, access credentials or setup information will be shared via registered contact details upon completion.
+                Custom digital invitations and related services are typically delivered within 2–5 working days depending on customization requirements. For software or platform-based services, access credentials or setup information will be shared via your registered contact details upon completion.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold mb-3">Shyara Education Labs (Hardware)</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Student development boards and FPGA learning kits under Shyara Education Labs are in active design and are not yet available for commercial purchase. Until launch, we only collect waitlist and interest submissions through{" "}
+                <a href="https://tech.shyara.co.in" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                  tech.shyara.co.in
+                </a>
+                . Shipping, fulfillment, and delivery terms for hardware will be published on that site when products become available.
               </p>
             </section>
 
