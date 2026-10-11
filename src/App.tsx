@@ -24,13 +24,21 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
+        <Route path="/index.html" element={<Index />} />
         <Route path="/solutions" element={<Solutions />} />
+        <Route path="/solutions/" element={<Solutions />} />
         <Route path="/about" element={<About />} />
+        <Route path="/about/" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/contact/" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/terms-of-service/" element={<TermsOfService />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/refund-policy/" element={<RefundPolicy />} />
         <Route path="/delivery-policy" element={<DeliveryPolicy />} />
+        <Route path="/delivery-policy/" element={<DeliveryPolicy />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
