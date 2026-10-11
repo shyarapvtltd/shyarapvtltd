@@ -732,51 +732,6 @@ const CTASection = () => (
 
 // Main Index Page
 const Index = () => {
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://shyara.co.in/#organization",
-        "name": "Shyara Tech Solutions (OPC) Pvt. Ltd.",
-        "url": "https://shyara.co.in",
-        "logo": "https://shyara.co.in/apple-touch-icon-s-20260408.png",
-        "sameAs": [
-          "https://digitalinvite.in",
-          "https://marketing.shyara.co.in",
-          "https://digital.shyara.co.in",
-          "https://bitex.shyara.co.in",
-          "https://tech.shyara.co.in"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://shyara.co.in/#website",
-        "url": "https://shyara.co.in",
-        "name": "Shyara Tech Solutions",
-        "publisher": { "@id": "https://shyara.co.in/#organization" }
-      },
-      {
-        "@type": "Product",
-        "@id": "https://digitalinvite.in/#product",
-        "name": "Digital Invite - Digital Wedding Invitations with RSVP",
-        "url": "https://digitalinvite.in",
-        "description": "Invitation websites with RSVP, digital cards to download and video invites, all in one place. Made for Indian weddings, shared on WhatsApp. Websites from ₹1,699 + GST.",
-        "brand": {
-          "@type": "Brand",
-          "name": "Digital Invite"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "1699",
-          "priceCurrency": "INR",
-          "url": "https://digitalinvite.in",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    ]
-  };
-
   return (
     <Layout>
       <SEO 
@@ -784,7 +739,6 @@ const Index = () => {
         description="Shyara Tech Solutions builds focused technology platforms: Digital Invite (digital wedding invitations with RSVP at digitalinvite.in), Shyara Marketing, BiteX restaurant POS, and Shyara Education Labs."
         keywords="Digital Invite, digitalinvite.in, digital wedding invitations, wedding invitation websites, Indian wedding invitations, RSVP online, digital cards, video invites, technology solutions, digital marketing, restaurant POS, education electronics"
         canonical="/"
-        schema={schema}
       />
       <HeroSection />
       <SolutionsPreview />

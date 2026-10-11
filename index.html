@@ -68,11 +68,14 @@
           "inLanguage": "en-IN"
         },
         {
-          "@type": "Product",
+          "@type": ["Product", "SoftwareApplication"],
           "@id": "https://digitalinvite.in/#product",
           "name": "Digital Invite - Digital Wedding Invitations with RSVP",
           "url": "https://digitalinvite.in",
+          "image": "https://shyara.co.in/apple-touch-icon-s-20260408.png",
           "description": "Invitation websites with RSVP, digital cards to download and video invites, all in one place. Made for Indian weddings, shared on WhatsApp. Websites from ₹1,699 + GST.",
+          "applicationCategory": "WebApplication",
+          "operatingSystem": "All modern browsers (WhatsApp, Chrome, Safari, iOS, Android)",
           "brand": {
             "@type": "Brand",
             "name": "Digital Invite"
@@ -84,8 +87,44 @@
             "@type": "Offer",
             "price": "1699",
             "priceCurrency": "INR",
+            "priceValidUntil": "2027-12-31",
             "url": "https://digitalinvite.in",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "DAY"
+                }
+              }
+            }
           }
         }
       ]
