@@ -34,7 +34,7 @@ const SolutionCard = ({
   solution: Solution;
   featured?: boolean;
 }) => (
-  <motion.div variants={fadeInUp} className="group relative">
+  <motion.div variants={fadeInUp} className="group relative max-w-full">
     <motion.div
       className={`absolute inset-0 bg-gradient-to-br ${solution.bgGradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
     />
@@ -42,9 +42,9 @@ const SolutionCard = ({
     <a
       href={solution.link}
       target="_blank"
-      rel="noopener noreferrer"
+      rel={solution.isDofollow ? "noopener" : "noopener noreferrer"}
       className={`relative block rounded-3xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow overflow-hidden ${
-        featured ? "p-8 md:p-12" : "p-8 md:p-10"
+        featured ? "p-5 sm:p-8 md:p-12" : "p-5 sm:p-8 md:p-10"
       }`}
     >
       <div
@@ -52,7 +52,7 @@ const SolutionCard = ({
       />
 
       <motion.div className="relative flex flex-col lg:flex-row lg:items-start gap-8">
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <motion.div
             className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${solution.gradient} p-0.5 mb-6`}
           >
@@ -70,12 +70,12 @@ const SolutionCard = ({
             </span>
             {featured && (
               <span className="inline-block px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-semibold tracking-wider uppercase">
-                New
+                Featured
               </span>
             )}
           </div>
 
-          <h3 className={`font-bold mb-4 ${featured ? "text-2xl md:text-3xl" : "text-2xl"}`}>
+          <h3 className={`font-bold mb-4 break-words ${featured ? "text-2xl md:text-3xl" : "text-2xl"}`}>
             {solution.title}
           </h3>
 
@@ -83,16 +83,16 @@ const SolutionCard = ({
             {solution.description}
           </p>
 
-          <motion.div className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
-            {solution.linkText}
+          <motion.div className="inline-flex flex-wrap items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all break-words max-w-full">
+            <span className="break-words">{solution.linkText}</span>
             <ExternalLink
               size={16}
-              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0"
             />
           </motion.div>
         </div>
 
-        <div className="lg:w-72 shrink-0">
+        <div className="w-full lg:w-72 shrink-0 max-w-full">
           <h4 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
             Key Features
           </h4>
@@ -103,11 +103,11 @@ const SolutionCard = ({
                 className="flex items-center gap-3 p-3 rounded-xl bg-secondary/30 group-hover:bg-secondary/50 transition-colors"
               >
                 <motion.div
-                  className={`w-8 h-8 rounded-lg bg-gradient-to-br ${solution.gradient} flex items-center justify-center`}
+                  className={`w-8 h-8 rounded-lg bg-gradient-to-br ${solution.gradient} flex items-center justify-center shrink-0`}
                 >
                   <feature.icon size={16} className="text-foreground" />
                 </motion.div>
-                <span className="text-sm font-medium">{feature.text}</span>
+                <span className="text-sm font-medium leading-snug">{feature.text}</span>
               </div>
             ))}
           </div>
@@ -158,8 +158,8 @@ const Solutions = () => {
   return (
     <Layout>
       <SEO
-        title="Our Solutions"
-        description="Explore Shyara's five technology brands: Shyara Marketing, Shyara Digital, Invites by Shyara, BiteX restaurant POS, and Shyara Education Labs. Built for performance and ready to scale."
+        title="Our Solutions | Digital Invite, Marketing, POS & Labs"
+        description="Explore Shyara's technology brands: Digital Invite (digital wedding invitations with RSVP at digitalinvite.in), Shyara Marketing, BiteX restaurant POS, and Shyara Education Labs. Built for performance and ready to scale."
         canonical="/solutions"
       />
 
@@ -176,7 +176,7 @@ const Solutions = () => {
             variants={fadeInUp}
             className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6"
           >
-            Our Solutions
+            Our Solutions & Products
           </motion.span>
           <motion.h1 variants={fadeInUp} className="text-display mb-6">
             Technology that{" "}
@@ -186,8 +186,16 @@ const Solutions = () => {
             variants={fadeInUp}
             className="text-muted-foreground text-body-xl leading-relaxed max-w-2xl mx-auto"
           >
-            Five focused brands designed to solve real business problems. Each
-            one built with care, optimized for performance, and ready to scale.
+            Focused brands and platforms designed to solve real business and consumer problems. Led by our flagship wedding invitation platform{" "}
+            <a
+              href="https://digitalinvite.in"
+              target="_blank"
+              rel="noopener"
+              className="text-primary hover:underline font-medium"
+            >
+              Digital Invite
+            </a>
+            , alongside growth marketing, smart POS, and electronics labs.
           </motion.p>
         </motion.div>
       </Section>
@@ -229,13 +237,13 @@ const Solutions = () => {
             Let's chat. We'll help you identify the right approach for your
             specific needs — no pressure, just clarity.
           </motion.p>
-          <motion.div variants={fadeInUp}>
-            <Button asChild variant="hero" size="xl" className="group">
-              <Link to="/contact">
+          <motion.div variants={fadeInUp} className="w-full flex justify-center">
+            <Button asChild variant="hero" size="xl" className="w-full sm:w-auto group justify-center max-w-xs sm:max-w-none">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2">
                 Schedule a Call
                 <ArrowRight
                   size={18}
-                  className="group-hover:translate-x-1 transition-transform"
+                  className="group-hover:translate-x-1 transition-transform shrink-0"
                 />
               </Link>
             </Button>

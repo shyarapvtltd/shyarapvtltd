@@ -17,6 +17,9 @@ import {
   Link2,
   LayoutTemplate,
   CircuitBoard,
+  Smartphone,
+  Video,
+  FileText,
 } from "lucide-react";
 
 export type SolutionFeature = {
@@ -37,9 +40,34 @@ export type Solution = {
   gradient: string;
   bgGradient: string;
   featured?: boolean;
+  isDofollow?: boolean;
 };
 
 export const solutions: Solution[] = [
+  {
+    id: "digitalinvite",
+    icon: Sparkles,
+    badge: "Flagship Product · Digital Invite",
+    title: "Digital Wedding Invitations with RSVP & Video Invites",
+    shortDescription:
+      "Self-serve invitation websites with interactive RSVP, downloadable digital cards, and video invites for Indian weddings. Shared easily on WhatsApp with zero app downloads.",
+    description:
+      "Our flagship wedding and celebration platform at digitalinvite.in makes Indian wedding invitations effortless. Create interactive wedding websites with real-time RSVP tracking, downloadable digital cards, and cinematic video invites. Guests open one link on WhatsApp—no app needed. Hosted for 2 months with live headcount analytics, multi-language support, and transparent pricing starting from ₹1,699 + GST.",
+    features: [
+      { icon: LayoutTemplate, text: "Interactive Wedding Websites with RSVP" },
+      { icon: Smartphone, text: "WhatsApp-First Sharing (No App for Guests)" },
+      { icon: Video, text: "Cinematic Video Invites in 24–48 Hours" },
+      { icon: FileText, text: "Downloadable Digital Cards (Instant PNG & PDF)" },
+      { icon: Users, text: "Live Guest Count & RSVP Export (Excel/PDF)" },
+      { icon: Zap, text: "Affordable Pricing from ₹1,699 + GST" },
+    ],
+    link: "https://digitalinvite.in",
+    linkText: "Visit Digital Invite (digitalinvite.in)",
+    gradient: "from-amber-500 via-rose-500 to-pink-500",
+    bgGradient: "from-amber-500/10 via-rose-500/5 to-transparent",
+    featured: true,
+    isDofollow: true,
+  },
   {
     id: "education",
     icon: GraduationCap,
@@ -148,6 +176,11 @@ export const featuredSolutions = solutions.filter((s) => s.featured);
 export const coreSolutions = solutions.filter((s) => !s.featured);
 
 export const footerSolutionLinks = [
+  {
+    name: "Digital Invite (Wedding & RSVP Platform)",
+    href: "https://digitalinvite.in",
+    isDofollow: true,
+  },
   { name: "Digital Marketing", href: "https://marketing.shyara.co.in" },
   { name: "Digital Invitations (Custom)", href: "https://digital.shyara.co.in" },
   { name: "Wedding Invite Platform", href: "https://invitesbyshyara.com" },

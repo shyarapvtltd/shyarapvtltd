@@ -98,10 +98,10 @@ const timeline = [
     icon: Rocket,
   },
   {
-    year: "2025",
-    title: "Building the Future",
+    year: "2025–2026",
+    title: "Flagship Platforms & Innovation",
     description:
-      "Launched Invites by Shyara, a self-serve wedding invitation platform, and began active design on Shyara Education Labs hardware for student labs.",
+      "Launched Digital Invite at digitalinvite.in — our flagship Indian wedding invitation and interactive RSVP platform, alongside advancing hardware designs at Shyara Education Labs.",
     icon: Target,
   },
 ];
@@ -131,9 +131,10 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About Us"
-        description="Learn about Shyara Tech Solutions — marketing, custom digital invitations, Invites by Shyara, BiteX restaurant POS, and Shyara Education Labs for student electronics."
+        title="About Us | Shyara Tech Solutions"
+        description="Learn about Shyara Tech Solutions — creators of Digital Invite (digital wedding invitations with RSVP at digitalinvite.in), Shyara Marketing, BiteX restaurant POS, and Shyara Education Labs."
         canonical="/about"
+        keywords="Shyara Tech Solutions, Digital Invite, digitalinvite.in, digital wedding invitations, RSVP wedding platform, digital marketing, restaurant POS, education hardware"
       />
       
       {/* Hero */}
@@ -164,10 +165,18 @@ const About = () => {
             className="text-muted-foreground text-body-xl leading-relaxed max-w-2xl mx-auto"
           >
             Shyara Tech Solutions is an India-based technology company focused on 
-            creating digital products and services that genuinely help businesses 
-            and institutions grow. Our portfolio spans Shyara Marketing, Shyara Digital, 
-            Invites by Shyara, BiteX, and Shyara Education Labs — each built for a 
-            specific need, united by one standard of quality.
+            creating digital products and platforms that genuinely empower users. 
+            Our portfolio spans our flagship wedding platform{" "}
+            <a
+              href="https://digitalinvite.in"
+              target="_blank"
+              rel="noopener"
+              className="text-foreground font-semibold hover:text-primary transition-colors underline decoration-primary/40 underline-offset-4"
+            >
+              Digital Invite (digitalinvite.in)
+            </a>
+            , Shyara Marketing, BiteX restaurant POS, and Shyara Education Labs — each built for a 
+            specific need, united by one uncompromising standard of quality.
           </motion.p>
         </motion.div>
       </Section>
@@ -346,11 +355,11 @@ const About = () => {
             and AI-powered solutions, we're making sophisticated tech accessible 
             and affordable.
           </motion.p>
-          <motion.div variants={fadeInUp}>
-            <Button asChild variant="hero" size="xl" className="group">
-              <Link to="/contact">
+          <motion.div variants={fadeInUp} className="w-full flex justify-center">
+            <Button asChild variant="hero" size="xl" className="w-full sm:w-auto group justify-center max-w-xs sm:max-w-none">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2">
                 Let's Build Together
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform shrink-0" />
               </Link>
             </Button>
           </motion.div>

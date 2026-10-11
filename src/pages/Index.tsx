@@ -13,7 +13,9 @@ import {
   ChevronDown,
   Star,
   Target,
-  Layers
+  Layers,
+  Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import {
   featuredSolutions,
@@ -208,31 +210,38 @@ const HeroSection = () => {
             your vision
           </motion.h1>
 
-          {/* Subheading */}
+          {/* Subheading with editorial in-content dofollow backlink */}
           <motion.p 
             variants={fadeInUp}
             className="text-body-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            From digital marketing and wedding invitations to restaurant POS and 
-            education lab hardware—we craft solutions that scale with your ambition. 
-            Thoughtful design, robust engineering, measurable results.
+            From our flagship wedding platform{" "}
+            <a
+              href="https://digitalinvite.in"
+              target="_blank"
+              rel="noopener"
+              className="text-foreground font-semibold hover:text-primary transition-colors underline decoration-primary/40 underline-offset-4"
+            >
+              Digital Invite
+            </a>{" "}
+            and growth marketing to restaurant POS and education lab hardware—we craft solutions that scale with your ambition. Thoughtful design, robust engineering, measurable results.
           </motion.p>
 
-          {/* CTA Buttons with enhanced styling */}
+          {/* CTA Buttons with boundary-safe responsive layout */}
           <motion.div 
             variants={fadeInUp}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md mx-auto"
           >
-            <Button asChild variant="hero" size="xl" className="group">
-              <Link to="/solutions">
+            <Button asChild variant="hero" size="xl" className="w-full sm:w-auto group justify-center">
+              <Link to="/solutions" className="inline-flex items-center justify-center gap-2">
                 Explore Solutions
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform shrink-0" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="xl" className="group">
-              <Link to="/contact">
+            <Button asChild variant="outline" size="xl" className="w-full sm:w-auto group justify-center">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2">
                 Get in Touch
-                <ChevronDown size={18} className="group-hover:translate-y-0.5 transition-transform" />
+                <ChevronDown size={18} className="group-hover:translate-y-0.5 transition-transform shrink-0" />
               </Link>
             </Button>
           </motion.div>
@@ -280,9 +289,9 @@ const SolutionCard = ({
     <a
       href={solution.link}
       target="_blank"
-      rel="noopener noreferrer"
+      rel={solution.isDofollow ? "noopener" : "noopener noreferrer"}
       className={`relative block rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm card-glow ${
-        featured ? "p-8 md:p-10" : "p-8"
+        featured ? "p-6 sm:p-8 md:p-10" : "p-6 sm:p-8"
       }`}
     >
       {/* Icon with gradient background */}
@@ -298,7 +307,7 @@ const SolutionCard = ({
         </span>
         {featured && (
           <span className="px-2 py-0.5 rounded-full bg-primary/15 text-primary text-xs font-semibold uppercase">
-            New
+            Featured
           </span>
         )}
       </div>
@@ -306,47 +315,180 @@ const SolutionCard = ({
       <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
       <p className="text-muted-foreground leading-relaxed mb-6">{solution.shortDescription}</p>
       
-      <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-        <span>{solution.linkText}</span>
-        <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+      <div className="flex flex-wrap items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all break-words max-w-full">
+        <span className="break-words">{solution.linkText}</span>
+        <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
       </div>
     </a>
   </motion.div>
 );
 
-// Solutions preview section with bento-style grid
-const SolutionsPreview = () => (
-  <Section className="relative overflow-hidden">
-    {/* Background decoration */}
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/30 to-transparent" />
-    
-    <div className="relative">
-      <SectionHeader 
-        title="What We Build"
-        subtitle="Five focused brands, one unified mission — helping businesses and institutions thrive in the digital age."
-      />
+// Solutions preview section with premier Flagship Spotlight on Digital Invite at top
+const SolutionsPreview = () => {
+  const flagshipSolution = featuredSolutions.find((s) => s.id === "digitalinvite") || featuredSolutions[0];
+  const otherFeatured = featuredSolutions.filter((s) => s.id !== flagshipSolution.id);
+  const core = coreSolutions;
 
-      <motion.div
-        className="space-y-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={staggerContainer}
-      >
-        <motion.div className="grid md:grid-cols-2 gap-6">
-          {featuredSolutions.map((solution, index) => (
-            <SolutionCard key={solution.id} solution={solution} index={index} featured />
-          ))}
+  return (
+    <Section className="relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/30 to-transparent" />
+      
+      <div className="relative">
+        <SectionHeader 
+          title="What We Build"
+          subtitle="Focused technology platforms and solutions — led by our flagship wedding platform Digital Invite, alongside growth marketing, smart POS, and education hardware."
+        />
+
+        <motion.div
+          className="space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          {/* Top Flagship Spotlight: Digital Invite (digitalinvite.in) */}
+          <motion.div
+            variants={fadeInUp}
+            className="relative rounded-3xl p-1 bg-gradient-to-r from-amber-500 via-rose-500 to-pink-500 shadow-2xl overflow-hidden group max-w-full"
+          >
+            <div className="relative rounded-[22px] bg-card/95 backdrop-blur-xl p-5 sm:p-8 md:p-12 overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-rose-500/15 via-amber-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div className="max-w-2xl min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase border border-primary/20">
+                      <Sparkles size={13} className="text-primary animate-pulse" />
+                      Flagship Consumer Platform
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-secondary text-foreground text-xs font-semibold">
+                      Websites from ₹1,699 + GST
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+                      Live at digitalinvite.in
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3 break-words">
+                    Digital Invite — Digital Wedding Invitations for Indian Weddings
+                  </h3>
+
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
+                    Our premier celebration platform at{" "}
+                    <a
+                      href="https://digitalinvite.in"
+                      target="_blank"
+                      rel="noopener"
+                      className="text-foreground font-semibold underline decoration-primary/50 underline-offset-4 hover:text-primary transition-colors"
+                    >
+                      digitalinvite.in
+                    </a>
+                    . Invitation websites with interactive RSVP, downloadable digital cards, and video invites—all in one place. One link on WhatsApp, zero apps needed for guests, with real-time headcount tracking for couples.
+                  </p>
+
+                  <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                    {[
+                      "Interactive Websites with Built-in RSVP",
+                      "WhatsApp-First Sharing (No App for Guests)",
+                      "Downloadable Cards (Instant PNG & PDF)",
+                      "Cinematic Video Invites in 24–48 Hours",
+                    ].map((feat) => (
+                      <div key={feat} className="flex items-center gap-2 text-sm text-foreground/90">
+                        <CheckCircle2 size={16} className="text-primary shrink-0" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Buttons with mobile-boundary safety and zero overflow */}
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-full">
+                    <Button asChild variant="hero" size="lg" className="w-full sm:w-auto shadow-lg group/btn justify-center">
+                      <a
+                        href="https://digitalinvite.in"
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center justify-center gap-2 text-center"
+                      >
+                        <span>Visit Digital Invite</span>
+                        <span className="hidden sm:inline">(digitalinvite.in)</span>
+                        <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform shrink-0" />
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="w-full sm:w-auto justify-center">
+                      <a
+                        href="https://digitalinvite.in/templates"
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center justify-center text-center"
+                      >
+                        Browse Wedding Websites
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Quick Access Card for digitalinvite.in offerings */}
+                <div className="w-full lg:w-80 shrink-0 p-5 sm:p-6 rounded-2xl bg-secondary/40 border border-border/60 max-w-full">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                    Explore digitalinvite.in
+                  </div>
+                  <div className="space-y-2.5">
+                    <a
+                      href="https://digitalinvite.in/templates"
+                      target="_blank"
+                      rel="noopener"
+                      className="flex items-center justify-between p-3 rounded-xl bg-card hover:bg-primary/10 transition-colors text-sm font-medium group/link"
+                    >
+                      <span>Invitation Websites</span>
+                      <ExternalLink size={14} className="text-muted-foreground group-hover/link:text-primary transition-colors" />
+                    </a>
+                    <a
+                      href="https://digitalinvite.in/cards"
+                      target="_blank"
+                      rel="noopener"
+                      className="flex items-center justify-between p-3 rounded-xl bg-card hover:bg-primary/10 transition-colors text-sm font-medium group/link"
+                    >
+                      <span>Digital Cards</span>
+                      <ExternalLink size={14} className="text-muted-foreground group-hover/link:text-primary transition-colors" />
+                    </a>
+                    <a
+                      href="https://digitalinvite.in/videos"
+                      target="_blank"
+                      rel="noopener"
+                      className="flex items-center justify-between p-3 rounded-xl bg-card hover:bg-primary/10 transition-colors text-sm font-medium group/link"
+                    >
+                      <span>Video Invites</span>
+                      <ExternalLink size={14} className="text-muted-foreground group-hover/link:text-primary transition-colors" />
+                    </a>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border/50 text-xs text-muted-foreground flex items-center justify-between">
+                    <span>Shyara Flagship Brand</span>
+                    <span className="font-semibold text-primary">CIN Verified</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Other featured solutions */}
+          <motion.div className="grid md:grid-cols-2 gap-6">
+            {otherFeatured.map((solution, index) => (
+              <SolutionCard key={solution.id} solution={solution} index={index} featured />
+            ))}
+          </motion.div>
+
+          {/* Core solutions */}
+          <motion.div className="grid md:grid-cols-3 gap-6">
+            {core.map((solution, index) => (
+              <SolutionCard key={solution.id} solution={solution} index={index} />
+            ))}
+          </motion.div>
         </motion.div>
-        <motion.div className="grid md:grid-cols-3 gap-6">
-          {coreSolutions.map((solution, index) => (
-            <SolutionCard key={solution.id} solution={solution} index={index} />
-          ))}
-        </motion.div>
-      </motion.div>
-    </div>
-  </Section>
-);
+      </div>
+    </Section>
+  );
+};
 
 // Values data
 const values = [
@@ -401,11 +543,11 @@ const WhyShyara = () => (
           Every project starts with understanding your unique challenges and 
           ends with solutions that genuinely move the needle.
         </motion.p>
-        <motion.div variants={fadeInUp}>
-          <Button asChild variant="outline" size="lg" className="group">
-            <Link to="/about">
+        <motion.div variants={fadeInUp} className="w-full sm:w-auto">
+          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto group justify-center">
+            <Link to="/about" className="inline-flex items-center justify-center gap-2">
               Our Story 
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform shrink-0" />
             </Link>
           </Button>
         </motion.div>
@@ -495,7 +637,7 @@ const ProcessSection = () => (
 
 // Trust metrics with animated counters
 const metrics = [
-  { value: "3+", label: "Active Products" },
+  { value: "4+", label: "Active Products" },
   { value: "100%", label: "Client Satisfaction" },
   { value: "24h", label: "Response Time" },
   { value: "24/7", label: "Support Ready" },
@@ -528,7 +670,7 @@ const TrustSection = () => (
   </Section>
 );
 
-// CTA Section with premium styling
+// CTA Section with boundary-safe styling
 const CTASection = () => (
   <Section className="relative overflow-hidden">
     {/* Background gradient mesh */}
@@ -557,16 +699,18 @@ const CTASection = () => (
       </motion.p>
       <motion.div 
         variants={fadeInUp}
-        className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md mx-auto"
       >
-        <Button asChild variant="hero" size="xl" className="group">
-          <Link to="/contact">
+        <Button asChild variant="hero" size="xl" className="w-full sm:w-auto group justify-center">
+          <Link to="/contact" className="inline-flex items-center justify-center gap-2">
             Start a Conversation
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform shrink-0" />
           </Link>
         </Button>
-        <Button asChild variant="ghost" size="lg">
-          <Link to="/solutions">View All Solutions</Link>
+        <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto justify-center">
+          <Link to="/solutions" className="inline-flex items-center justify-center">
+            View All Solutions
+          </Link>
         </Button>
       </motion.div>
     </motion.div>
@@ -575,12 +719,59 @@ const CTASection = () => (
 
 // Main Index Page
 const Index = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://shyara.co.in/#organization",
+        "name": "Shyara Tech Solutions (OPC) Pvt. Ltd.",
+        "url": "https://shyara.co.in",
+        "logo": "https://shyara.co.in/apple-touch-icon-s-20260408.png",
+        "sameAs": [
+          "https://digitalinvite.in",
+          "https://marketing.shyara.co.in",
+          "https://digital.shyara.co.in",
+          "https://bitex.shyara.co.in",
+          "https://tech.shyara.co.in"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://shyara.co.in/#website",
+        "url": "https://shyara.co.in",
+        "name": "Shyara Tech Solutions",
+        "publisher": { "@id": "https://shyara.co.in/#organization" }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://digitalinvite.in/#product",
+        "name": "Digital Invite - Digital Wedding Invitations with RSVP",
+        "url": "https://digitalinvite.in",
+        "description": "Invitation websites with RSVP, digital cards to download and video invites, all in one place. Made for Indian weddings, shared on WhatsApp. Websites from ₹1,699 + GST.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Digital Invite"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "1699",
+          "priceCurrency": "INR",
+          "url": "https://digitalinvite.in",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  };
+
   return (
     <Layout>
       <SEO 
-        title="Shyara Tech Solutions | Technology that Empowers"
-        description="Shyara Tech Solutions builds five focused brands: marketing, custom digital invitations, Invites by Shyara wedding platform, BiteX restaurant POS, and Shyara Education Labs for student electronics."
+        title="Shyara Tech Solutions | Digital Invite, Technology & Growth Platforms"
+        description="Shyara Tech Solutions builds focused technology platforms: Digital Invite (digital wedding invitations with RSVP at digitalinvite.in), Shyara Marketing, BiteX restaurant POS, and Shyara Education Labs."
+        keywords="Digital Invite, digitalinvite.in, digital wedding invitations, wedding invitation websites, Indian wedding invitations, RSVP online, digital cards, video invites, technology solutions, digital marketing, restaurant POS, education electronics"
         canonical="/"
+        schema={schema}
       />
       <HeroSection />
       <SolutionsPreview />

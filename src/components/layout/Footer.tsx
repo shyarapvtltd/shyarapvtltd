@@ -125,7 +125,7 @@ const Footer = () => {
                   <a
                     href={item.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={'isDofollow' in item && item.isDofollow ? "noopener" : "noopener noreferrer"}
                     className="text-muted-foreground hover:text-foreground transition-colors text-sm inline-flex items-center gap-1 group"
                   >
                     {item.name}

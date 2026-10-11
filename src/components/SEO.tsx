@@ -6,6 +6,8 @@ interface SEOProps {
   canonical?: string;
   type?: "website" | "article";
   noindex?: boolean;
+  keywords?: string;
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const SEO = ({ 
@@ -13,7 +15,9 @@ const SEO = ({
   description, 
   canonical, 
   type = "website",
-  noindex = false 
+  noindex = false,
+  keywords,
+  schema
 }: SEOProps) => {
   const siteUrl = "https://shyara.co.in";
   const fullTitle = title.includes("Shyara") ? title : `${title} | Shyara Tech Solutions`;
@@ -23,7 +27,15 @@ const SEO = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {keywords && <meta name="keywords" content={keywords} />}
+      <meta
+        name="robots"
+        content={
+          noindex
+            ? "noindex, nofollow"
+            : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        }
+      />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
       {/* Open Graph */}
@@ -31,10 +43,20 @@ const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+      <meta property="og:site_name" content="Shyara Tech Solutions" />
+      <meta property="og:locale" content="en_IN" />
       
       {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+
+      {/* Structured Data (JSON-LD) */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };

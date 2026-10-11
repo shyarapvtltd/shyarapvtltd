@@ -292,6 +292,7 @@ const Contact = () => {
                   <Button 
                     variant="outline" 
                     size="lg"
+                    className="w-full sm:w-auto max-w-full justify-center"
                     onClick={() => {
                       setIsSubmitted(false);
                       setFormData({ name: "", email: "", message: "" });
@@ -365,18 +366,18 @@ const Contact = () => {
                       type="submit" 
                       variant="hero" 
                       size="xl" 
-                      className="w-full sm:w-auto group"
+                      className="w-full sm:w-auto max-w-full group justify-center"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                          <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin shrink-0" />
                           Sending...
                         </>
                       ) : (
                         <>
                           Send Message
-                          <Send size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          <Send size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
                         </>
                       )}
                     </Button>
@@ -412,11 +413,11 @@ const Contact = () => {
             Check out our solutions page to learn more about what we offer, 
             or reach out directly — we're always happy to chat.
           </motion.p>
-          <motion.div variants={fadeInUp}>
-            <Button asChild variant="outline" size="lg" className="group">
-              <Link to="/solutions">
+          <motion.div variants={fadeInUp} className="w-full flex justify-center">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto max-w-full group justify-center">
+              <Link to="/solutions" className="inline-flex items-center justify-center gap-2">
                 Explore Solutions
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform shrink-0" />
               </Link>
             </Button>
           </motion.div>

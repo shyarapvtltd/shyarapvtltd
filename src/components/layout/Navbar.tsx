@@ -125,7 +125,7 @@ export const Navbar = () => {
           </motion.button>
           
           {/* CTA Button */}
-          <Button asChild variant="hero" size="sm" className="rounded-full">
+          <Button asChild variant="hero" size="sm" className="rounded-full shrink-0 whitespace-nowrap">
             <Link to="/contact">Talk to Us</Link>
           </Button>
         </div>
@@ -245,8 +245,8 @@ export const Navbar = () => {
                 }}
                 className="mt-8"
               >
-                <Button asChild variant="hero" size="xl" className="rounded-full">
-                  <Link to="/contact">Talk to Us</Link>
+                <Button asChild variant="hero" size="xl" className="w-full rounded-full justify-center text-center">
+                  <Link to="/contact" className="inline-flex items-center justify-center">Talk to Us</Link>
                 </Button>
               </motion.div>
             </motion.div>
