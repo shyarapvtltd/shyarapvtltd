@@ -135,19 +135,27 @@ const FloatingShapes = () => (
 // Animated scroll indicator
 const ScrollIndicator = () => (
   <motion.div
-    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-scroll-indicator"
-    initial={{ opacity: 0, y: 20 }}
+    className="flex flex-col items-center gap-2 hero-scroll-indicator cursor-pointer select-none group"
+    initial={{ opacity: 0, y: 15 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 1.5, duration: 0.5 }}
+    transition={{ delay: 1.2, duration: 0.5 }}
+    onClick={() => {
+      window.scrollTo({
+        top: window.innerHeight * 0.9,
+        behavior: 'smooth'
+      });
+    }}
   >
-    <span className="text-xs text-muted-foreground tracking-wider uppercase">Scroll</span>
+    <span className="text-[11px] font-medium tracking-widest uppercase text-muted-foreground/70 group-hover:text-primary transition-colors">
+      Scroll
+    </span>
     <motion.div
-      className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
-      whileHover={{ borderColor: 'hsl(var(--primary) / 0.5)' }}
+      className="w-5 h-9 rounded-full border-2 border-muted-foreground/25 flex items-start justify-center p-1.5 group-hover:border-primary/50 transition-colors"
+      whileHover={{ scale: 1.05 }}
     >
       <motion.div
-        className="w-1.5 h-1.5 bg-primary rounded-full"
-        animate={{ y: [0, 12, 0] }}
+        className="w-1.5 h-1.5 bg-primary rounded-full shadow-sm"
+        animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
       />
     </motion.div>
@@ -182,13 +190,16 @@ const HeroSection = () => {
   return (
     <section 
       ref={ref}
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-[92vh] flex flex-col items-center justify-between overflow-hidden pt-24 pb-6"
     >
       <FloatingOrbs />
       <FloatingShapes />
 
+      {/* Top spacer to balance vertical centering */}
+      <div className="w-full h-1 pointer-events-none" aria-hidden="true" />
+
       <motion.div 
-        className="container-wide relative z-10"
+        className="container-wide relative z-10 my-auto py-4"
         style={{ y, opacity }}
       >
         <motion.div 
@@ -249,7 +260,7 @@ const HeroSection = () => {
           {/* Trust indicators */}
           <motion.div 
             variants={fadeInUp}
-            className="mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-muted-foreground"
+            className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-muted-foreground"
           >
             {[
               { icon: Star, text: "100% Client Satisfaction" },
@@ -265,7 +276,9 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      <ScrollIndicator />
+      <div className="relative z-10 pt-4 pb-2">
+        <ScrollIndicator />
+      </div>
     </section>
   );
 };
